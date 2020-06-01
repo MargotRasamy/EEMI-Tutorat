@@ -14,7 +14,9 @@ let Todo = require('./model/todo.model');
 app.use(cors());
 app.use(bodyParser.json());
 
-mongoose.connect('mongodb://127.0.0.1:27017/todos', { useNewUrlParser: true });
+mongoose.connect('mongodb+srv://dbTutorat:dbTutoratPassword@clusterdb-vc2cm.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true });
+
+// Compass v1.12 connect db : mongodb+srv://dbTutorat:dbTutorat@clusterdb-vc2cm.mongodb.net/test
 
 const connection = mongoose.connection;
 
