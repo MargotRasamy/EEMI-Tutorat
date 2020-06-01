@@ -25,10 +25,12 @@ let User = new Schema({
     year: String,
     tutor: {
         type: Boolean,
-        module: [String]
+        moduleTeached: [String],
+        subjectTeached: [String]
     },
     photo: String,
-    
+    module: [String],
+    subject: [String]
 
 
     // ratings: {
