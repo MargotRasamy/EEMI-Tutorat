@@ -1,22 +1,21 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 
 import axios from 'axios';
 
-export default class Register extends Component {
+export default class Login extends Component {
 
     constructor(props) {
         super(props);
 
         this.state = {
-            firstname: '',
-            lastname: '',
             email: '',
             password: ''
         }
 
     }
 
-    // Recuperation de la valeur des champs d'inscription
+    // Recuperation de la valeur des champs de connexion
     onChange = (e) => {
         const element = e.target.name;
         this.setState({
@@ -24,30 +23,36 @@ export default class Register extends Component {
         });
     }
 
-    // Soumission du formulaire d'inscription
+    // Soumission du formulaire de connexion
     onSubmit = (e) => {
         e.preventDefault();
         
-        console.log(`Form submitted:`);
-        console.log(`Firstname is: ${this.state.firstname}, Lastname is: ${this.state.lastname}, Email is: ${this.state.email}`);
+        console.log(`Connexion form submitted:`);
+        console.log(`Email is: ${this.state.email}`);
  
-        // Creation d'un nouvel utilisateur
-        const newUser = {
-            firstname: this.state.firstname,
-            lastname: this.state.lastname,
+        // Creation d'un nouvelle validation d'utilisateur
+        const newUserToValidate = {
             email: this.state.email,
             password: this.state.password
         };
 
         // Envoi du nouvel utilisateur a la base de donnees (requete
-        axios.post('http://localhost:4000/register', newUser) // On envoie newUser dans le body
-            .then(res => console.log("hello its me" + res.data));
+        axios.post('http://localhost:4000/login', newUserToValidate) // On envoie newUser dans le body
+            .then(res => {
+                
+                console.log('res', res)
+                console.log('res.status', res.status)
+                if(res.status === 200) {
+                    this.props.history.push("/")
+                }
+            }
+            );
+    
+        // Si la connexion est reussie, rediriger vers le site (dashboard)
         
 
         // Reinitialisation de l'etat et des valeurs des champs
         this.setState({
-            firstname: '',
-            lastname: '',
             email: '',
             password: ''
         })
@@ -56,24 +61,8 @@ export default class Register extends Component {
     render() {
         return (
             <div>
-                <h3>Inscription</h3>
+                <h3>Connexion</h3>
                 <form onSubmit={(e) => this.onSubmit(e)}>
-                    <div className="form-group"> 
-                        <label>Prenom </label>
-                        <input  type="text"
-                                className="form-control"
-                                name="firstname"
-                                value={this.state.firstname}
-                                onChange={(e) => this.onChange(e)} />
-                    </div>
-                    <div className="form-group"> 
-                        <label>Nom </label>
-                        <input  type="text"
-                                className="form-control"
-                                name="lastname"
-                                value={this.state.lastname}
-                                onChange={(e) => this.onChange(e)} />
-                    </div>
                     <div className="form-group"> 
                         <label>Email </label>
                         <input  type="text"
@@ -92,7 +81,7 @@ export default class Register extends Component {
                     </div>
                  
                     <div className="form-group">
-                        <input type="submit" value="S'inscrire" className="btn btn-primary" />
+                        <input type="submit" value="Se connecter" className="btn btn-primary" />
                     </div>
                     
                 </form>

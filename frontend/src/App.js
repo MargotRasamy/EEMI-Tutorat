@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useReducer } from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -6,6 +6,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Register from "./components/Register";
 import EditTodo from "./components/edit-todo";
 import TodosList from "./components/todos-list";
+import UsersList from "./components/UsersList";
+import Login from "./components/Login";
 
 
 class App extends Component {
@@ -23,15 +25,16 @@ class App extends Component {
                   <Link to="/" className="nav-link">List</Link>
                 </li>
                 <li className="navbar-item">
-                  <Link to="/create" className="nav-link">Create an element</Link>
+                  <Link to="/register" className="nav-link">Create an element</Link>
                 </li>
               </ul>
             </div>
           </nav>
           <br/>
-          <Route path="/" exact component={TodosList} />
+          <Route path="/" exact component={UsersList} />
           <Route path="/edit/:id" component={EditTodo} />
-          <Route path="/create" component={Register} />
+          <Route path="/register" component={Register} />
+          <Route path="/login" component={Login} />
         </div>
       </Router>
     );

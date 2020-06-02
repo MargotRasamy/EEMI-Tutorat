@@ -1,5 +1,6 @@
 let User = require('../model/user.model');
 let Todo = require('../model/todo.model');
+const bcrypt = require('bcryptjs');
 
 
 // S'occupe de gérer les utilisateurs
@@ -8,11 +9,11 @@ let Todo = require('../model/todo.model');
 
 
 exports.getAll = (req, res)  => {
-    Todo.find(function(err, todos) {
+    User.find(function(err, users) {
         if (err) {
             console.log(err);
         } else {
-            res.json(todos);
+            res.json(users);
         }
     });
 };
@@ -44,12 +45,59 @@ exports.updateUser = (req, res) => {
 }
 
 exports.addUser = (req, res) => {
-    let user = new User(req.body); // req.body = newUser envoye avec axios dans frontend
-    user.save()
-        .then(user => {
-            res.status(200).json({'user' : "sucess" });
+    let password = req.body.password;
+    bcrypt.hash(password, 12)
+        .then( (hashedPassword) => {
+            let newUser = {
+                firstname : req.body.firstname,
+                lastname : req.body.lastname,
+                email : req.body.email,
+                password : hashedPassword
+            }
+            let user = new User(newUser); // req.body = newUser envoye avec axios dans frontend
+            user.save()
+                .then(user => {
+                    res.status(200).json({'user' : "sucess" });
+                })
+                .catch(err => {
+                    res.status(400).send('adding new user failed');
+                });
+                } ) //12 est le salt length a generer)
+}
+
+
+// Login 
+exports.login = (req, res) => {
+
+    let newPasswordToValidate = req.body.password;
+    User.findOne({email : req.body.email})
+        .then((user) => {
+            
+            // bcrypt.compare(unhashed password, hashed password from database)
+            bcrypt.compare(newPasswordToValidate, user.password)
+                .then(match => {
+                    if (match){
+                        res.status(200).json({'user' : user }); // json is res.data sent to front end
+                        console.log('connexion reussie')
+                        
+                    }
+                    else {
+                        res.status(400).send('Either mail or password is wrong');
+                    }
+                })
         })
         .catch(err => {
-            res.status(400).send('adding new user failed');
+            res.status(400).send('login user failed');
         });
+    // bcrypt.compare()
+    //         let user = new User(newUser); // req.body = newUser envoye avec axios dans frontend
+    //         user.save()
+    //             .then(user => {
+    //                 res.status(200).json({'user' : "sucess" });
+    //             })
+    //             .catch(err => {
+    //                 res.status(400).send('adding new user failed');
+    //             });
+    //             } ) //12 est le salt length a generer)
 }
+

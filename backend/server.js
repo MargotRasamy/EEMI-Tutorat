@@ -32,12 +32,13 @@ todoRoutes.route('/update/:id').post(UserController.updateUser);
 
 todoRoutes.route('/add').post(UserController.addUser);
 
-
 app.use('/todos', todoRoutes);
 
 app.post('/register', UserController.addUser)
 
+app.post('/login', UserController.login)
 
+app.get('/users', UserController.getAll)
 
 app.listen(PORT, function() {
     console.log("Server is running on Port: " + PORT);

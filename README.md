@@ -3,7 +3,7 @@
 
 
 ## Components & setup
-Components : Bootstrap, Nodemon, Axios.
+Components : Bootstrap, Nodemon, Axios(requests), BcryptJS (for hash)
 
 ## To see the project :
 
@@ -39,7 +39,7 @@ cd backend && npm install
 ### Launch the server
 
 ```console
-cd backend && npm start
+cd backend && node server.js
 ```
 
 ### See the website in your browser
@@ -47,5 +47,6 @@ cd backend && npm start
 ```console
 cd frontend && npm start
 ```
+
 
 © Margot RASAMY - 2020
