@@ -39,9 +39,9 @@ export default class Register extends Component {
             password: this.state.password
         };
 
-        // Envoi du nouvel utilisateur a la base de donnees (requete)
-        // axios.post('http://localhost:4000/todos/add', newTodo)
-        //     .then(res => console.log(res.data));
+        // Envoi du nouvel utilisateur a la base de donnees (requete
+        axios.post('http://localhost:4000/register', newUser) // On envoie newUser dans le body
+            .then(res => console.log(res.data));
 
         // Reinitialisation de l'etat et des valeurs des champs
         this.setState({

@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const UserController = require('./controller/UserController');
+
 
 const mongoose = require('mongoose');
 
@@ -15,7 +17,6 @@ app.use(bodyParser.json());
 mongoose.connect('mongodb+srv://dbTutorat:dbTutoratPassword@clusterdb-vc2cm.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true });
 
 // Compass mongodb+srv://dbTutorat:dbTutoratPassword@clusterdb-vc2cm.mongodb.net/test
-const UserController = require('./controller/UserController');
 
 const connection = mongoose.connection;
 
@@ -31,7 +32,13 @@ todoRoutes.route('/update/:id').post(UserController.updateUser);
 
 todoRoutes.route('/add').post(UserController.addUser);
 
+todoRoutes.route('/register').post(UserController.addUser);
+
 app.use('/todos', todoRoutes);
+
+
+
+
 
 app.listen(PORT, function() {
     console.log("Server is running on Port: " + PORT);

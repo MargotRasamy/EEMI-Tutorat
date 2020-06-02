@@ -1,3 +1,4 @@
+let User = require('../model/user.model');
 let Todo = require('../model/todo.model');
 
 
@@ -45,12 +46,12 @@ exports.updateUser = (req, res) => {
 }
 
 exports.addUser = (req, res) => {
-    let todo = new Todo(req.body);
-    todo.save()
-        .then(todo => {
-            res.status(200).json({'todo': 'todo added successfully'});
+    let user = new User(req.body); // req.body = newUser envoye avec axios dans frontend
+    user.save()
+        .then(user => {
+            res.status(200).json({'user' : "sucess" });
         })
         .catch(err => {
-            res.status(400).send('adding new todo failed');
+            res.status(400).send('adding new user failed');
         });
 }

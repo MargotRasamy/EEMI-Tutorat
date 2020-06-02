@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-let User = new Schema({
+let UserModel = new Schema({
     email: {
         type: String,
         required: true
@@ -37,4 +37,4 @@ let User = new Schema({
 
 
 
-module.exports = mongoose.model('Todo', User);
+module.exports = mongoose.model('User', UserModel);
