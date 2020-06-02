@@ -7,8 +7,6 @@ let Todo = require('../model/todo.model');
 
 
 
-
-
 exports.getAll = (req, res)  => {
     Todo.find(function(err, todos) {
         if (err) {

@@ -32,11 +32,10 @@ todoRoutes.route('/update/:id').post(UserController.updateUser);
 
 todoRoutes.route('/add').post(UserController.addUser);
 
-todoRoutes.route('/register').post(UserController.addUser);
 
 app.use('/todos', todoRoutes);
 
-
+app.post('/register', UserController.addUser)
 
 
 
