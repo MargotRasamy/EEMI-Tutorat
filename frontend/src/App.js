@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import CreateTodo from "./components/create-todo";
+import Register from "./components/Register";
 import EditTodo from "./components/edit-todo";
 import TodosList from "./components/todos-list";
 
@@ -31,7 +31,7 @@ class App extends Component {
           <br/>
           <Route path="/" exact component={TodosList} />
           <Route path="/edit/:id" component={EditTodo} />
-          <Route path="/create" component={CreateTodo} />
+          <Route path="/create" component={Register} />
         </div>
       </Router>
     );

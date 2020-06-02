@@ -26,16 +26,13 @@ let User = new Schema({
     tutor: {
         type: Boolean,
         moduleTeached: [String],
-        subjectTeached: [String]
+        subjectTeached: [String],
+        
     },
     photo: String,
     module: [String],
     subject: [String]
 
-
-    // ratings: {
-    //     type: Array
-    // },
 });
 
 
