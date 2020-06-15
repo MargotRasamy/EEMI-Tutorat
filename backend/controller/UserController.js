@@ -54,7 +54,7 @@ exports.addUser = (req, res) => {
                 email : req.body.email,
                 password : hashedPassword
             }
-            let user = new User(newUser); // req.body = newUser envoye avec axios dans frontend
+            let user = new User(newUser); // req.body = newUser envoie avec axios dans frontend
             user.save()
                 .then(user => {
                     res.status(200).json({'user' : "sucess" });

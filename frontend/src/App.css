@@ -4,3 +4,12 @@
 .completed {
   text-decoration: line-through;
 }
+
+.registering-progress{
+  background-color: rgb(215, 222, 238) !important;
+}
+
+.registering-stepper-progress{
+  width: 50%;
+  background-color: rgb(72, 93, 187) !important;
+}

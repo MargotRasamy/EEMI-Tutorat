@@ -1,13 +1,12 @@
 import React, { Component, useReducer } from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-
+import './App.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import Register from "./components/Register";
+import Register from "./components/register";
 import EditTodo from "./components/edit-todo";
-import TodosList from "./components/todos-list";
 import UsersList from "./components/UsersList";
-import Login from "./components/Login";
+import Login from "./components/login";
 
 
 class App extends Component {
@@ -18,12 +17,9 @@ class App extends Component {
           <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <a className="navbar-brand" href="https://codingthesmartway.com" target="_blank">
             </a>
-            <Link to="/" className="navbar-brand">MERN-Stack App</Link>
+            <Link to="/" className="navbar-brand">Home</Link>
             <div className="collpase navbar-collapse">
               <ul className="navbar-nav mr-auto">
-                <li className="navbar-item">
-                  <Link to="/" className="nav-link">List</Link>
-                </li>
                 <li className="navbar-item">
                   <Link to="/register" className="nav-link">Create an element</Link>
                 </li>
