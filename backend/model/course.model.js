@@ -2,22 +2,23 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 let Course = new Schema({
-    nameCourse: { 
-        type: String,
-        required: true
+    creator: {
+        type: Schema.Types.ObjectId,
+        required: true,
+        ref: 'User'
     },
     module: {
         type: String,
         required: true
     },
+    nameCourse: { 
+        type: String,
+        required: true
+    },
+    description_course: String,
     date: {
         type: Date,
         required: true
-    },
-    creator: {
-        type: Schema.Types.ObjectId,
-        required: true,
-        ref: 'User'
     },
     participants: [
         {   
@@ -26,10 +27,10 @@ let Course = new Schema({
         }
     ],
     maxParticipants : Number,
-    duration: {
-        type: Number,
-        required: true
-    }
+    // duration: {
+    //     type: Number,
+    //     required: true
+    // }
 });
 
 module.exports = mongoose.model('Course', Course);

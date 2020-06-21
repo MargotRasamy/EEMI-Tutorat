@@ -29,6 +29,7 @@ export default class UsersList extends Component {
         return (
             <div>
                 <h3>Users List</h3>
+                <h3>Hello {process.env.REACT_APP_NOT_SECRET_CODE}</h3>
                 <table className="table table-striped" style={{ marginTop: 20 }} >
                     <thead>
                         <tr>

@@ -3,12 +3,13 @@ const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const UserController = require('./controller/UserController');
-
+const CourseController = require('./controller/CourseController');
 
 const mongoose = require('mongoose');
 
 
 const PORT = 4000;
+
 const todoRoutes = express.Router();
 
 app.use(cors());
@@ -33,6 +34,8 @@ todoRoutes.route('/update/:id').post(UserController.updateUser);
 todoRoutes.route('/add').post(UserController.addUser);
 
 app.use('/todos', todoRoutes);
+
+app.post('/create_course', CourseController.addCourse);
 
 app.post('/register', UserController.addUser)
 
