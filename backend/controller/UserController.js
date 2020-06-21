@@ -1,7 +1,7 @@
 let User = require('../model/user.model');
 let Todo = require('../model/todo.model');
 const bcrypt = require('bcryptjs');
-
+var mongoose = require('mongoose');
 
 // S'occupe de gérer les utilisateurs
 
@@ -13,15 +13,16 @@ exports.getAll = (req, res)  => {
         if (err) {
             console.log(err);
         } else {
+            console.log("one", users)
             res.json(users);
         }
     });
 };
 
 exports.getById = (req, res) => {
-    let id = req.params.id;
-    Todo.findById(id, function(err, todo) {
-        res.json(todo);
+    User.findById('5eef6f62c145de2c9df0db29')
+    .then(perso => {
+        console.log("perso", perso)
     });
 }
 

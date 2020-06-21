@@ -27,7 +27,7 @@ connection.once('open', function() {
 
 todoRoutes.route('/').get(UserController.getAll);
 
-todoRoutes.route('/:id').get(UserController.getById);
+todoRoutes.route('/test').get(UserController.getById);
 
 todoRoutes.route('/update/:id').post(UserController.updateUser);
 
@@ -35,6 +35,7 @@ todoRoutes.route('/add').post(UserController.addUser);
 
 app.use('/todos', todoRoutes);
 
+app.get('/get_all_courses', CourseController.getAllCourses);
 app.post('/create_course', CourseController.addCourse);
 
 app.post('/register', UserController.addUser)

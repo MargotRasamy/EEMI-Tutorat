@@ -9,6 +9,7 @@ import EditTodo from "./components/edit-todo";
 import UsersList from "./components/UsersList";
 import Calendar from "./components/calendar";
 import Login from "./components/login";
+import AllCourses from './components/courses/allCourses';
 
 
 class App extends Component {
@@ -33,6 +34,7 @@ class App extends Component {
           <Route path="/calendar" exact component={Calendar} />
           <Route path="/edit/:id" component={EditTodo} />
           <Route path="/courses/new" component={CreateCourse} />
+          <Route path="/courses/all" component={AllCourses} />
           <Route path="/register" component={Register} />
           <Route path="/login" component={Login} />
         </div>

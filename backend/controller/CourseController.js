@@ -1,5 +1,15 @@
 let Course = require('../model/course.model');
 
+exports.getAllCourses = (req, res) => {
+    Course.find()
+    .populate('creator')
+    .exec()
+    .then(courses => {
+        console.log("COURSES", courses)
+        res.status(200).json(courses);
+    })
+}
+
 exports.addCourse = (req, res) => {
     let body = req.body;
     let myNewCourse = new Course(body); 
