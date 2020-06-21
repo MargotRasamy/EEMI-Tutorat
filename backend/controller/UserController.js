@@ -2,17 +2,15 @@ let User = require('../model/user.model');
 let Todo = require('../model/todo.model');
 const bcrypt = require('bcryptjs');
 
-
-// S'occupe de gérer les utilisateurs
-
-
-
+const session = require('express-session');
+const MongoDBStore = require('connect-mongodb-session')(session);
 
 exports.getAll = (req, res)  => {
     User.find(function(err, users) {
         if (err) {
             console.log(err);
         } else {
+            console.log("req.session", req.session)
             res.json(users);
         }
     });
@@ -47,6 +45,7 @@ exports.updateUser = (req, res) => {
 exports.addUser = (req, res) => {
     let password = req.body.password;
     bcrypt.hash(password, 12)
+
         .then( (hashedPassword) => {
             let newUser = {
                 firstname : req.body.firstname,
@@ -62,42 +61,35 @@ exports.addUser = (req, res) => {
                 .catch(err => {
                     res.status(400).send('adding new user failed');
                 });
-                } ) //12 est le salt length a generer)
+        }); //12 est le salt length a generer)
 }
 
 
 // Login 
 exports.login = (req, res) => {
-
     let newPasswordToValidate = req.body.password;
     User.findOne({email : req.body.email})
         .then((user) => {
-            
             // bcrypt.compare(unhashed password, hashed password from database)
             bcrypt.compare(newPasswordToValidate, user.password)
-                .then(match => {
-                    if (match){
-                        res.status(200).json({'user' : user }); // json is res.data sent to front end
-                        console.log('connexion reussie')
-                        
-                    }
-                    else {
-                        res.status(400).send('Either mail or password is wrong');
-                    }
-                })
+            .then(match => {
+                if (match){
+                    req.session.isLoggedIn = true;
+                    req.session.user = user;
+                    return req.session.save(err => {
+                        if(err){console.log(err);}
+                        console.log('connexion reussie', req.session)
+                        res.status(200).json({'user' : req.session.user }); // json is res.data sent to front end
+                    });
+                    
+                }
+                else {
+                    res.status(400).send('Either mail or password is wrong');
+                }
+            });
         })
         .catch(err => {
             res.status(400).send('login user failed');
         });
-    // bcrypt.compare()
-    //         let user = new User(newUser); // req.body = newUser envoye avec axios dans frontend
-    //         user.save()
-    //             .then(user => {
-    //                 res.status(200).json({'user' : "sucess" });
-    //             })
-    //             .catch(err => {
-    //                 res.status(400).send('adding new user failed');
-    //             });
-    //             } ) //12 est le salt length a generer)
 }
 
