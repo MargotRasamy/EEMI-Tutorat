@@ -15,5 +15,12 @@
 
 .registering-stepper-progress{
   width: 50%;
-  background-color: rgb(72, 93, 187) !important;
+  background-color: var(--colorPurple) !important;
+}
+
+#root {
+  background-color: var(--colorPurpleVeryLight);
+}
+.main {
+  margin: var(--marginsLayout);
 }

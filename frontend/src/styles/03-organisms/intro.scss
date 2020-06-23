@@ -1,0 +1,31 @@
+.o-intro {
+    display: flex;
+
+    &>article {
+        width: 50%;
+    }
+
+    &>article:first-of-type {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    &>article:first-of-type>:last-child {
+        margin-top: var(--spaceM);
+    }
+
+
+
+}
+
+//Mobile
+@include small {
+    .o-intro>article:last-of-type {
+        display: none;
+    }
+
+    .o-intro>article {
+        width: 100%;
+    }
+}

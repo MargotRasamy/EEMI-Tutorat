@@ -1,0 +1,12 @@
+.m-pagination{
+    display: flex;
+    justify-content: space-between;
+    &>ul{
+        width: 50%;
+        display: flex;
+        justify-content: space-between;
+    }
+    &>ul>*{
+        text-align: center;
+    }
+}

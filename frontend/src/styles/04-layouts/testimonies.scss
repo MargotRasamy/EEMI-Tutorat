@@ -1,0 +1,112 @@
+//Margin/padding per section
+
+//Margins right and left
+.l-testimonies {
+  & .o-header {
+    margin: 2vw 6vw 0;
+  }
+
+  & .l-testimonies__main {
+    margin: 4vw 12vw;
+  }
+
+  & .o-footer {
+    padding: 2vw 6vw;
+  }
+}
+
+//Margin bottom
+.l-testimonies__main {
+  &>*:not(:last-child) {
+    margin-bottom: var(--spaceM);
+  }
+}
+
+
+
+//  GRIDS
+
+.l-testimonies__main {
+
+  @include small {
+    display: grid;
+    grid-gap: 2vw;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+    grid-template-areas: "title"
+      "input"
+      "intro"
+      "select"
+      "articles"
+      "cta";
+  }
+
+  @include medium {
+    display: grid;
+    grid-gap: 2vw;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto;
+    grid-template-areas: "title title"
+      "intro intro "
+      "input select "
+      "articles articles"
+      "cta cta";
+  }
+
+  @include large {
+    display: grid;
+    grid-gap: 2vw;
+    grid-template-columns: auto auto auto;
+    grid-template-rows: auto;
+    grid-template-areas: "title title title"
+      "intro intro intro"
+      "input select ."
+      "articles articles articles"
+      "cta cta cta";
+  }
+}
+
+
+.l-testimonies__main>:first-child {
+  grid-area: title;
+}
+
+.l-testimonies__main>:nth-child(2) {
+  grid-area: intro;
+}
+
+.l-testimonies__main>:nth-child(3) {
+  grid-area: input;
+  display: flex;
+  justify-content: center;
+
+  &>:only-child {
+    width: var(--articleItemWidth);
+  }
+
+  @include medium {
+    justify-content: flex-end;
+  }
+}
+
+.l-testimonies__main>:nth-child(4) {
+  grid-area: select;
+  display: flex;
+  justify-content: center;
+
+  &>:only-child {
+    width: var(--articleItemWidth);
+  }
+
+  @include medium {
+    justify-content: flex-start;
+  }
+}
+
+.l-testimonies__main>:nth-child(5) {
+  grid-area: articles;
+}
+
+.l-testimonies__main>:last-child {
+  grid-area: cta;
+}

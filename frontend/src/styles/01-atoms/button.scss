@@ -1,0 +1,26 @@
+.a-button {
+    display: inline-block;
+    border-radius: var(--borderRadiusLarge);
+    background-color: var(--colorYellow);
+    padding: var(--spaceS) var(--spaceXL);
+    box-shadow: var(--boxShadow);
+    &:hover{
+        background-color: var(--colorYellowLight);
+    }
+}
+
+.a-button--nav {
+    background-color: var(--colorGreen);
+    padding: var(--spaceS) var(--spaceL);
+    &:hover{
+        background-color: var(--colorGreenLight);
+    }
+}
+
+.a-button--footer {
+    background-color: var(--colorRedLight);
+    padding: var(--spaceS) var(--spaceL);
+    &:hover{
+        background-color: var(--colorOrangeLight);
+    }
+}

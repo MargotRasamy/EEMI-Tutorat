@@ -1,0 +1,38 @@
+.m-menuMobile {
+    background-color: var(--colorMain);
+    color: var(--colorWhite);
+    width: 40vw;
+    height: 100vh;
+    padding: var(--spaceXL) 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    :last-child {
+        align-self: center;
+    }
+}
+
+.m-menuIcon {
+    display: flex;
+    align-items: center;
+
+    &>* {
+        margin: var(--spaceXS);
+    }
+
+}
+
+.m-menuConnexion {
+    padding: var(--spaceM);
+    background: var(--colorSecondary);
+
+    &>* {
+        margin: 0 auto;
+    }
+
+    &>*+* {
+        margin-top: var(--spaceS);
+        color: var(--colorWhite);
+    }
+}

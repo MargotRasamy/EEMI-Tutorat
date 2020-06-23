@@ -1,6 +1,9 @@
 import React, { Component, useReducer } from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import './App.css';
+import './App.scss';
+import './styles/style.scss';
+
+
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import Register from "./components/register";
@@ -10,13 +13,14 @@ import UsersList from "./components/UsersList";
 import Calendar from "./components/calendar";
 import Login from "./components/login";
 import AllCourses from './components/courses/allCourses';
+import Landing from './components/landing';
 
 
 class App extends Component {
   render() {
     return (
       <Router>
-        <div className="container">
+        <div className="main">
           <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <a className="navbar-brand" href="https://codingthesmartway.com" target="_blank">
             </a>
@@ -30,6 +34,7 @@ class App extends Component {
             </div>
           </nav>
           <br/>
+          <Route path="/landing" exact component={Landing} />
           <Route path="/" exact component={UsersList} />
           <Route path="/calendar" exact component={Calendar} />
           <Route path="/edit/:id" component={EditTodo} />

@@ -1,0 +1,42 @@
+.a-title {
+  font-size: var(--fontSizeH3);
+  font-family: var(--fontFamilyMain);
+  color: var(--colorRedLight);
+  font-weight: bold;
+}
+
+.a-title--level1 {
+  font-size: var(--fontSizeH2);
+  font-family: var(--fontFamilyTitle);
+  color: var(--colorRed);
+}
+
+.a-title--level2-medium {
+  font-size: var(--fontSizeH6);
+  font-family: var(--fontFamilyMain);
+  font-weight: medium;
+  color: var(--colorMain);
+  line-height: var(--lineHeightMain);
+}
+
+.a-title--level2-medium-reversed {
+  font-size: var(--fontSizeH6);
+  font-family: var(--fontFamilyMain);
+  font-weight: medium;
+  color: var(--colorWhite);
+  line-height: var(--lineHeightMain);
+}
+
+.a-title--level2-bold {
+  font-size: var(--fontSizeH6);
+  font-family: var(--fontFamilyMain);
+  font-weight: bold;
+  color: var(--colorMain);
+}
+
+.a-title--level2-bold-reversed {
+  font-size: var(--fontSizeH6);
+  font-family: var(--fontFamilyMain);
+  font-weight: bold;
+  color: var(--colorWhite);
+}

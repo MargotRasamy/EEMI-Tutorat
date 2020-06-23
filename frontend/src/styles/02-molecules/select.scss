@@ -1,0 +1,130 @@
+.m-select {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-family: var(--fontFamilyMain);
+
+  & * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  &>label {
+    font-weight: var(--fontWeightMedium);
+    margin-bottom: var(--spaceXS);
+    font-size: var(--fontSizeSubtitle);
+  }
+
+}
+
+.selectbox {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.option-container {
+  background-color: var(--colorWhite);
+  color: var(--colorMain);
+  width: 100%;
+  max-height: 0;
+  opacity: 0;
+  transition: all 0.3s ease;
+  border-radius: var(--borderRadiusSmall);
+  box-shadow: var(--boxShadow);
+  overflow: hidden;
+}
+
+.selectbox--active .option-container {
+  max-height: 240px;
+  opacity: 1;
+  position: absolute;
+  z-index:2;
+}
+
+.selectbox__displayWord,
+.option-container__option {
+  padding: 12px 24px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.selectbox__displayWord {
+  position: relative;
+  background-color: var(--colorWhite);
+  color: var(--colorMain);
+  border-radius: var(--borderRadiusSmall);
+  box-shadow: var(--boxShadow);
+  height: 40px;
+}
+
+.selectbox__displayWord::after {
+  position: absolute;
+  top: 50%;
+  right: var(--spaceM);
+  content: "";
+  background: url("../../src/assets/images/icons/arrow-down.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: var(--spaceM);
+  width: var(--spaceM);
+  color: var(--colorWhite);
+  transform: translateY(-50%);
+  transition: all 0.4s;
+}
+
+.selectbox--active .selectbox__displayWord::after {
+  transform: translateY(-50%) rotateZ(180deg);
+}
+
+.selectbox--shake {
+  animation: shake 0.3s forwards;
+}
+
+.option-container {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  width: 100%;
+}
+
+//on hover
+.option-container__option:hover {
+  background-color: var(--colorOrangeLight);
+  color: var(--colorWhite);
+}
+
+.option__radio {
+  display: none;
+}
+
+.option__label {
+  cursor: pointer;
+}
+
+@keyframes shake {
+
+  10%,
+  90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+
+  20%,
+  80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%,
+  50%,
+  70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%,
+  60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}

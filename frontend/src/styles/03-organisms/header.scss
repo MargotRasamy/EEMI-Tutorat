@@ -1,0 +1,49 @@
+.o-header {
+  display: flex;
+  justify-content: space-between;
+
+  &>.a-logo{
+    width: 75px;
+    height:75px;
+  }
+  &>.a-logo--desktop{
+    width: 140px;
+    height:75px;
+  }
+
+  &>.a-logo {
+    @include medium {
+      display: none;
+    }
+  }
+}
+
+.o-header--small {
+  align-self: center;
+
+  @include large {
+    display: none;
+  }
+}
+
+.o-header--large {
+  align-self: center;
+
+  @include underLarge {
+    display: none;
+  }
+
+}
+
+.o-header--mobile-small {
+  display: flex;
+
+  &>:first-child {
+    align-self: start;
+    margin-top: var(--spaceML);
+  }
+
+  @include large {
+    display: none;
+  }
+}

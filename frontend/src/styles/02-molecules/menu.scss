@@ -1,0 +1,14 @@
+.m-menuFooter {
+    display: flex;
+    flex-direction: column;
+
+    &>* {
+        margin-bottom: var(--spaceML);
+    }
+}
+
+.m-menuFooter--about {
+    &>*+* {
+        margin-left: var(--spaceM);
+    }
+}

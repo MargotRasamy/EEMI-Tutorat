@@ -4,6 +4,7 @@ import axios from 'axios';
 import RegisterStep2 from './register-step2';
 import RegisterStep3 from './register-step3';
 
+
 export default class Register extends Component {
 
     constructor(props) {
@@ -68,6 +69,7 @@ export default class Register extends Component {
     render() {
         return (
             <div>
+
                 <h3>Inscription</h3>
                 {/* Stepper for registering steps */}
                 <div class="progress registering-progress" style={{height: "3px"}}>

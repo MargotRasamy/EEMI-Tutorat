@@ -1,0 +1,7 @@
+.m-newsletter {
+
+    &>:last-child {
+        margin-top: var(--spaceM);
+        float: right;
+    }
+}

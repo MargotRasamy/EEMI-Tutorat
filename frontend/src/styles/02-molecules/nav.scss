@@ -1,0 +1,18 @@
+.m-nav-list {
+    display: block;
+
+    &>* {
+        margin: 0 var(--spaceS);
+    }
+
+    @include large {
+        display: flex;
+        flex-wrap: wrap;
+    }
+}
+
+.m-nav-list--reversed {
+    &>*>* {
+        color: var(--colorWhite);
+    }
+}

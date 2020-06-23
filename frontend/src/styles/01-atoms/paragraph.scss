@@ -1,0 +1,29 @@
+.a-paragraph {
+    font-size: var(--fontSizeMain);
+    color: var(--colorMain);
+    font-family: var(--fontFamilyMain);
+    line-height: var(--lineHeightMain);
+}
+
+.a-paragraph--underline {
+    text-decoration: underline;
+}
+
+.a-paragraph--medium {
+    font-weight: medium;
+    font-size: var(--fontSizeH6);
+}
+
+.a-paragraph--bold {
+    font-weight: bold;
+}
+
+.a-paragraph--bold-reversed {
+    color: var(--colorWhite);
+    font-size: var(--fontSizeSubtitle);
+}
+
+.a-paragraph--small {
+    font-size: var(--fontSizeSmall);
+    color: var(--colorWhite);
+}
