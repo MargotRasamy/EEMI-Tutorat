@@ -1,0 +1,30 @@
+.a-button {
+    display: inline-block;
+    border-radius: var(--borderRadiusMedium);
+    padding: var(--spaceS) var(--spaceM);
+    text-align: center;
+    width: 100%;
+    box-shadow: var(--boxShadow);
+    font-weight: bold;
+}
+
+.a-button--purple {
+    background-color: var(--colorPurple);
+    color: var(--colorWhite);
+    box-shadow: var(--boxShadowPurple);
+    &:hover{
+        background-color: var(--colorPurpleLight);
+        color: var(--colorWhite);
+    }
+}
+
+.a-button--yellow {
+    background-color: var(--colorYellow);
+    color: var(--colorWhite);
+    box-shadow: var(--boxShadowYellow);
+    &:hover{
+        background-color: var(--colorYellowLight);
+        color: var(--colorWhite);
+    }
+}
+

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-
+import ButtonPurple from '../../1-atoms/button/buttonPurple.js';
+import ButtonYellow from '../../1-atoms/button/buttonYellow.js';
 
 export default class Landing extends Component {
 
@@ -21,7 +22,8 @@ export default class Landing extends Component {
     render() {
         return (
             <div>
-                helo
+                <ButtonPurple buttonText="Connexion"/>
+                <ButtonYellow buttonText="Inscription"/>
 
             </div>
         )
