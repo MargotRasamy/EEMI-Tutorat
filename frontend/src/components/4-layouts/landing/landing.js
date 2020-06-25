@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Header from '../../3-organisms/header/header.js';
+import Intro from '../../3-organisms/intro/intro';
+import CaptionsSection from '../../3-organisms/captions-section/captions-section';
 
-import ButtonPurple from '../../1-atoms/button/buttonPurple.js';
-import ButtonYellow from '../../1-atoms/button/buttonYellow.js';
+import './landing.scss';
+import Caption from '../../2-molecules/caption/caption.js';
 
 export default class Landing extends Component {
 
@@ -21,11 +24,14 @@ export default class Landing extends Component {
 
     render() {
         return (
-            <div>
-                <ButtonPurple buttonText="Connexion"/>
-                <ButtonYellow buttonText="Inscription"/>
-
-            </div>
+            <div className="l-landing">
+              <Header/>
+              <Intro/>
+              <CaptionsSection/>
+          
+          </div>
+            
+           
         )
     }
 }

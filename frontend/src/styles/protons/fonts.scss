@@ -1,3 +1,5 @@
+@import './medias.scss';
+
 @mixin font($font-family, $file-path, $font-weight, $font-style) {
   @font-face {
     font-family: $font-family;
@@ -7,9 +9,9 @@
   }
 }
 
-@include font('Nunito', '../../assets/fonts/Nunito/Nunito-ExtraBold.ttf', bold, normal);
+@include font('Nunito', '../../assets/fonts/Nunito/Nunito-ExtraBold.ttf', bold, bold);
 @include font('Nunito', '../../assets/fonts/Nunito/Nunito-Regular.ttf', normal, normal);
-@include font('NunitoSans', '../../assets/fonts/NunitoSans/NunitoSans-Bold.ttf', bold, normal);
+@include font('NunitoSans', '../../assets/fonts/NunitoSans/NunitoSans-Bold.ttf', bold, bold);
 @include font('NunitoSans', '../../assets/fonts/NunitoSans/NunitoSans-Regular.ttf', normal, normal);
 @include font('NunitoSans', '../../assets/fonts/NunitoSans/NunitoSans-Light.ttf', lighter, normal);
 
@@ -19,7 +21,7 @@
   --fontFamilyMain: NunitoSans, sans-serif;
 
   --fontSizeH1: 72px;
-  --fontSizeH2: 48px;
+  --fontSizeH2: 36px;
   --fontSizeH3: 28px;
   --fontSizeH4: 24px;
   --fontSizeH5: 21px;
@@ -30,17 +32,17 @@
   --fontSizeXSmall: 10px;
 
   //MOBILE FONT SIZE
-  /*@include small {
+  @include small {
     --fontSizeH1: 48px;
-    --fontSizeH2: 36px;
-    --fontSizeH3: 30px;
-    --fontSizeH4: 28px;
-    --fontSizeH5: 24px;
-    --fontSizeH6: 21px;
+    --fontSizeH2: 30px;
+    --fontSizeH3: 28px;
+    --fontSizeH4: 24px;
+    --fontSizeH5: 21px;
+    --fontSizeH6: 18px;
     --fontSizeMain: 16px;
     --fontSizeSubtitle: 14px;
     --fontSizeSmall: 12px;
-  }*/
+  }
   --fontWeightNormal: normal;
   --fontWeightBold: bold;
   --fontWeightLight: lighter;

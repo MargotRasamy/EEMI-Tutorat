@@ -1,0 +1,10 @@
+.m-caption{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    &>:first-child{
+        color: var(--colorPurple);
+        margin-bottom: var(--spaceS);
+    }
+}

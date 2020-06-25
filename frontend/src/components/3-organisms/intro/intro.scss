@@ -1,0 +1,56 @@
+@import '../../../styles/protons/medias.scss';
+.o-intro {
+
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-gap: var(--gutterWidth);
+    align-items: center;
+    justify-content: center;
+    
+
+    &>:first-child{
+        font-size: var(--fontSizeH1);
+        grid-column: 1 / 13;
+        text-align: center;
+     
+    }
+    &>:nth-child(2){
+        text-align: center;
+        color: var(--darkGrey);
+        font-size: var(--fontSizeH5);
+        grid-column: 4 / 10;
+   
+    }
+    &>:nth-child(3){
+        grid-column: 5 / 9;
+ 
+    }
+}
+
+@include small {
+    .o-intro>:first-child,.o-intro>:nth-child(2){
+        grid-column: 1 / 13 !important;
+    }
+    .o-intro>:nth-child(3){
+        grid-column: 2 / 12;
+    }
+}
+
+@include medium {
+    .o-intro>:nth-child(2){
+        grid-column: 3 / 11;
+   
+    }
+    .o-intro>:nth-child(3){
+        grid-column: 5 / 9;
+ 
+    }
+}
+
+@include large {
+
+    .o-intro>:nth-child(3){
+        grid-column: 5 / 9;
+ 
+    }
+}
