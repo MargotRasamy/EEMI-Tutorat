@@ -2,7 +2,7 @@
 .o-intro {
 
     display: grid;
-    grid-template-columns: repeat(12, 1fr);
+    grid-template-columns: var(--gridColumns);
     grid-gap: var(--gutterWidth);
     align-items: center;
     justify-content: center;
@@ -29,10 +29,10 @@
 
 @include small {
     .o-intro>:first-child,.o-intro>:nth-child(2){
-        grid-column: 1 / 13 !important;
+        grid-column: 1 / 5 !important;
     }
     .o-intro>:nth-child(3){
-        grid-column: 2 / 12;
+        grid-column: 2 / 4;
     }
 }
 

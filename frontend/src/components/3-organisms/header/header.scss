@@ -1,6 +1,7 @@
+@import '../../../styles/protons/medias.scss';
 .o-header{
     display: grid;
-    grid-template-columns: repeat(12, 1fr);
+    grid-template-columns: var(--gridColumns);
     grid-gap: var(--gutterWidth);
     align-items: center;
     padding: var(--spaceXS) 0;
@@ -12,4 +13,8 @@
     }
 }
 
-
+@include small {
+   .o-header>:nth-child(2){
+        display:none
+    }
+}

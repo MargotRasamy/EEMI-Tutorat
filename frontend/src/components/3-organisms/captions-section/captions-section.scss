@@ -3,7 +3,7 @@
 
 .o-captions-section{
     display: grid;
-    grid-template-columns: repeat(12, 1fr);
+    grid-template-columns: var(--gridColumns);
     grid-gap: var(--gutterWidth);
     align-items: flex-start;
     justify-content: flex-start;
@@ -24,6 +24,6 @@
 
 @include small {
     .o-captions-section>*{
-        grid-column: 1 / 13 !important;
+        grid-column: 1 / 5 !important;
     }
 }

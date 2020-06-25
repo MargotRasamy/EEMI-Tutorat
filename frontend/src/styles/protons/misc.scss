@@ -1,3 +1,4 @@
+@import './medias.scss';
 :root {
   // Small buttons
   --borderRadiusSmall: 8px;
@@ -14,5 +15,10 @@
   
   --marginsLayout: 30px;
   --gutterWidth: 16px;
-
+  --gridColumns: repeat(12, 1fr);
+  @include small {
+    --marginsLayout: 16px;
+    --gutterWidth: 10px;
+    --gridColumns: repeat(4, 1fr);
+  }
 }
