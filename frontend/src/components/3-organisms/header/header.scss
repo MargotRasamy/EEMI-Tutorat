@@ -18,3 +18,12 @@
         display:none
     }
 }
+
+@include medium {
+    .o-header>:first-child{
+        grid-column: 1 / 7;
+    }
+    .o-header>:nth-child(2){
+        grid-column: 7 / 13;
+    }
+ }

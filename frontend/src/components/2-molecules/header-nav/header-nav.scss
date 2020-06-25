@@ -3,10 +3,37 @@
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 16px;
     align-items: center;
+    &>*{
+        justify-self: center;
+    }
     &>:first-child{
         grid-column: 1 / 2;
     }
     &>:nth-child(2){
         grid-column: 2 / 3;
+    }
+}
+
+.m-header-nav--connected{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 16px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-weight: bold;
+    &>*{
+        justify-self: center;
+    }
+ 
+    &>:first-child{
+        grid-column: 1 / 2;
+    }
+    &>:nth-child(2){
+        grid-column: 2 / 3;
+
+    }
+    &>:nth-child(3){
+        grid-column: 3 / 4;
     }
 }

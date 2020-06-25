@@ -1,0 +1,22 @@
+.a-link-text{
+    text-decoration: none;
+    font-weight: bold;
+}
+.a-link-text--purple{
+    color: var(--colorPurple);
+    &:hover{
+        color: var(--colorPurpleLight);
+    }
+}
+.a-link-text--yellow{
+    color: var(--colorYellow);
+    &:hover{
+        color: var(--colorYellowLight);
+    }
+}
+.a-link-text--white{
+    color: var(--colorWhite);
+    &:hover{
+        color: var(--colorWhite);
+    }
+}

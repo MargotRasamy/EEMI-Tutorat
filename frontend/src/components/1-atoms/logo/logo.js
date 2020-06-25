@@ -3,7 +3,7 @@ import './logo.scss';
 
 const ButtonPurple = () => {
     return (
-        <a class="a-logo" href="#">
+        <a className="a-logo" href="#">
             Stud<strong>eemi</strong>
         </a>
     );

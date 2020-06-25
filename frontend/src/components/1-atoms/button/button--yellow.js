@@ -3,8 +3,8 @@ import './button.scss';
 
 const ButtonYellow = (props) => {
     return (
-        <a class="a-link a-button a-button--yellow" href="#">
-            {props.buttonText}
+        <a class="a-button a-button--yellow" href="#">
+            {props.innerText}
         </a>
     );
 };

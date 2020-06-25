@@ -1,0 +1,8 @@
+.a-link-image{
+    width: 20px;
+    height: 20px;
+    fill: var(--colorPurple);
+    &:hover{
+        fill: var(--colorPurpleLight);
+    }
+}
