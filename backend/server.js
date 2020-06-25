@@ -45,7 +45,6 @@ app.use(bodyParser.json());
 
 app.use((req, res, next) => {
     if (!req.session.user) {
-        console.log("no session from server.js", req.session);
         return next();
     }
     User.findById(req.session.user._id)
@@ -70,9 +69,11 @@ app.use('/todos', todoRoutes);
 app.get('/get_all_courses', CourseController.getAllCourses);
 app.post('/create_course', CourseController.addCourse);
 
-app.post('/login', UserController.login)
-app.post('/register', UserController.addUser)
-app.get('/users', UserController.getAll)
+app.post('/getMessages', UserController.getMessages);
+app.post('/postMessage', UserController.addMessage);
+app.post('/login', UserController.login);
+app.post('/register', UserController.addUser);
+app.get('/users', UserController.getAll);
 
 app.get('/', UserController.getAll);
 

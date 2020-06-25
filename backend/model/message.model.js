@@ -3,12 +3,10 @@ const Schema = mongoose.Schema;
 
 let Message = new Schema({
     message: { 
-        type: String,
-        required: true
+        type: String
     },
     date: {
         type: Date,
-        required: true
     },
     author: {
         type: Schema.Types.ObjectId,

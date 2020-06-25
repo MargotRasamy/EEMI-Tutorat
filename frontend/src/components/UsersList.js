@@ -36,6 +36,7 @@ export default class UsersList extends Component {
                             <th>Prenom</th>
                             <th>Nom</th>
                             <th>Email</th>
+                            <th>Message</th>
                   
                         </tr>
                     </thead>
@@ -53,6 +54,6 @@ const UserCard = props => (
         <td >{props.user.firstname}</td>
         <td >{props.user.lastname}</td>
         <td >{props.user.email}</td>
-       
+        <td > <Link to={`message?from=${process.env.REACT_APP_MAIL_USER}&to=${props.user.email}`} ><button className="btn btn-success">Contact</button></Link></td>
     </tr>
 )

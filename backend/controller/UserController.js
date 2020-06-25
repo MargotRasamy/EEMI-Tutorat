@@ -1,9 +1,9 @@
 let User = require('../model/user.model');
+let Message = require('../model/message.model');
 let Todo = require('../model/todo.model');
 const bcrypt = require('bcryptjs');
 
-const session = require('express-session');
-const MongoDBStore = require('connect-mongodb-session')(session);
+var mongoose = require('mongoose');
 
 exports.getAll = (req, res)  => {
     User.find(function(err, users) {
@@ -63,6 +63,92 @@ exports.addUser = (req, res) => {
         }); //12 est le salt length a generer)
 }
 
+
+// GET all message between A and B.
+exports.getMessages = (req, res) => {
+    const sender = req.body.sender;
+    const receiver = req.body.receiver;
+
+    var senderId;
+    var receiverId;
+
+    User.find({ email: {$in: [sender, receiver]}})
+        .then(user => {
+            console.log("got user ? ", sender, receiver)
+            for (let i=0; i<user.length; i++) {
+                console.log("loop", user[i].email)
+                console.log("sender", sender, "receiver",receiver)
+                if (user[i].email === sender) {
+                    senderAll = user[i];
+                    
+                } 
+                else if (user[i].email === receiver) {
+                    receiverAll = user[i];
+                }
+            }
+        if (senderAll && receiverAll) {
+            let senderId = senderAll._id
+            Message.find({ author: mongoose.Types.ObjectId(senderAll._id), receiver: mongoose.Types.ObjectId(receiverAll._id),})
+                .then(messages => {
+                    let replyToFront = {
+                        author: senderAll,
+                        receiver: receiverAll,
+                        messages: messages
+                    }
+                    res.status(200).json({'messages' : replyToFront });
+                }).catch(err => {console.log("Err get messages", err)})
+        }
+        })
+        .catch(err => {
+            console.log("ERROR", err)
+        });
+}
+
+// Add a message 
+exports.addMessage = (req, res) => {
+    const sender = req.body.sender;
+    const receiver = req.body.receiver;
+    const messageText = req.body.message;
+
+    var senderId;
+    var receiverId;
+
+    User.find({ email: {$in: [sender, receiver]}})
+        .then(user => {
+            for (let i=0; i<user.length; i++) {
+                console.log("loop", user[i].email)
+                console.log("sender", sender, "receiver",receiver)
+                if (user[i].email === sender) {
+                    senderId = user[i]._id;
+                } 
+                else if (user[i].email === receiver) {
+                    receiverId = user[i]._id;
+                }
+            }
+        if (senderId && receiverId) {
+            const d = new Date();
+            const myDate = `${d.getFullYear()}-0${d.getMonth()}-${d.getDate()}`
+            
+            const newMessage = {
+                author: mongoose.Types.ObjectId(senderId),
+                receiver: mongoose.Types.ObjectId(receiverId),
+                message: messageText,
+                date: new Date()
+            }
+            let message = new Message(newMessage)
+            message.save()
+                .then(res => {
+                    console.log("Add message success:", res)
+                })
+                .catch(err => {
+                    res.status(400).send('adding new message failed');
+                });
+        }
+        })
+        .catch(err => {
+            console.log("ERROR", err)
+          });
+}
 
 // Login post
 exports.login = (req, res) => {
