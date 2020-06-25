@@ -12,19 +12,19 @@ let UserModel = new Schema({
     },
     firstname: {
         type: String,
-        required: true
+        //required: true
     },
     lastname: {
         type: String,
-        required: true
+        //required: true
     },
     tutorStatus: {
         type: Boolean,
-        required: true,
+        //required: true,
     },
     classYear: {
         type: [String],
-        required: true
+        //required: true
     },
     modules: {
         type: [String],
