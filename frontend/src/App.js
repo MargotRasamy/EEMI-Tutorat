@@ -14,6 +14,7 @@ import Calendar from "./components/calendar";
 import Login from "./components/login";
 import AllCourses from './components/courses/allCourses';
 import Landing from './components/4-layouts/landing/landing';
+import Messages from './components/message';
 
 
 class App extends Component {
@@ -30,7 +31,7 @@ class App extends Component {
           <Route path="/courses/all" component={AllCourses} />
           <Route path="/register" component={Register} />
           <Route path="/login" component={Login} />
-
+          <Route path="/message" component={Messages} />
       </Router>
       </div>
       

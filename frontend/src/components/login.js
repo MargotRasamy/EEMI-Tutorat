@@ -40,10 +40,8 @@ export default class Login extends Component {
         axios.post('http://localhost:4000/login', newUserToValidate) // On envoie newUser dans le body
             .then(res => {
                 
-                console.log('res', res)
-                console.log('res.status', res.status)
                 if(res.status === 200) {
-                    this.props.history.push("/")
+                    this.props.history.push("/");
                 }
             }
             );
