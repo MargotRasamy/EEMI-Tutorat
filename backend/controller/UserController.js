@@ -10,7 +10,6 @@ exports.getAll = (req, res)  => {
         if (err) {
             console.log(err);
         } else {
-            console.log("req.session", req.session)
             res.json(users);
         }
     });
@@ -65,7 +64,7 @@ exports.addUser = (req, res) => {
 }
 
 
-// Login 
+// Login post
 exports.login = (req, res) => {
     let newPasswordToValidate = req.body.password;
     User.findOne({email : req.body.email})
@@ -78,8 +77,9 @@ exports.login = (req, res) => {
                     req.session.user = user;
                     return req.session.save(err => {
                         if(err){console.log(err);}
-                        console.log('connexion reussie', req.session)
-                        res.status(200).json({'user' : req.session.user }); // json is res.data sent to front end
+                        console.log('connexion reussie', req.session);
+                        // res.status(200).json({'user' : req.session.user }); // json is res.data sent to front end
+                        res.redirect('/');
                     });
                     
                 }
