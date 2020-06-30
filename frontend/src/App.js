@@ -15,14 +15,27 @@ import Login from "./components/login";
 import AllCourses from './components/courses/allCourses';
 import Landing from './components/4-layouts/landing/landing';
 import Messages from './components/message';
+import Header from './components/3-organisms/header/header.js';
+
 
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+        isLoggedIn : false
+    }
+
+  };
   render() {
+    
+
     return (
       <div className="main">
-        <Router>
         
+        <Router>
+          <Header isLoggedIn={this.state.isLoggedIn}/>
           <Route path="/landing" exact component={Landing} />
           <Route path="/" exact component={UsersList} />
           <Route path="/calendar" exact component={Calendar} />

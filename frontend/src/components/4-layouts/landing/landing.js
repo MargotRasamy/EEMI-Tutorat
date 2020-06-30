@@ -25,11 +25,10 @@ export default class Landing extends Component {
     render() {
         return (
             <div className="l-landing">
-              <Header/>
               <Intro/>
               <CaptionsSection/>
           
-          </div>
+            </div>
             
            
         )

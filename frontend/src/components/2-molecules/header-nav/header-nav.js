@@ -12,21 +12,14 @@ import LinkIconPurple from '../../1-atoms/link-icon/link-icon--purple';
 
 export default class HeaderNav extends Component {
 
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            isLoggedIn : false
-        }
-
-    }
-
+   
+    
     render() {
         return (
             <Fragment>
-                {this.state.isLoggedIn
+                { this.props.isLoggedIn
                     ? <div className="m-header-nav--connected">
-                        <LinkTextPurple innerText="Mes messages"/>
+                        <LinkTextPurple To="/message" innerText="Mes messages"/>
                         <img src={NotificationIcon}/>
                         <Avatar To="/login" ImgSrc={AvatarTest}/>
                     </div>

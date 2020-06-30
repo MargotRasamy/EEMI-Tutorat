@@ -23,7 +23,7 @@ export default class Header extends Component {
         return (
             <div className="o-header">
                     <Logo/>
-                    <HeaderNav/>
+                    <HeaderNav isLoggedIn={this.props.isLoggedIn}/>
             </div>
         )
     }
