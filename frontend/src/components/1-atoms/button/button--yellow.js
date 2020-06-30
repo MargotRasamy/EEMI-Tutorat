@@ -1,11 +1,12 @@
 import React from 'react';
 import './button.scss';
+import { NavLink } from 'react-router-dom';
 
 const ButtonYellow = (props) => {
     return (
-        <a class="a-button a-button--yellow" href="#">
+        <NavLink className="a-button a-button--yellow" to={props.To}>
             {props.innerText}
-        </a>
+        </NavLink>
     );
 };
 

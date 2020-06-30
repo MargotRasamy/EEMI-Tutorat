@@ -4,7 +4,7 @@ import './caption.scss';
 const Caption = (props) => {
     return (
         <div className="m-caption">
-            <h5>{props.captionTitle}</h5>
+            <h6>{props.captionTitle}</h6>
             <p>{props.captionText}</p>
         </div>
     );

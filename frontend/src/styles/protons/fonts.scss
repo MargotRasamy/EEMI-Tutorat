@@ -12,6 +12,7 @@
 @include font('Nunito', '../../assets/fonts/Nunito/Nunito-ExtraBold.ttf', bold, bold);
 @include font('Nunito', '../../assets/fonts/Nunito/Nunito-Regular.ttf', normal, normal);
 @include font('NunitoSans', '../../assets/fonts/NunitoSans/NunitoSans-Bold.ttf', bold, bold);
+@include font('NunitoSans', '../../assets/fonts/NunitoSans/NunitoSans-SemiBold.ttf', medium, medium);
 @include font('NunitoSans', '../../assets/fonts/NunitoSans/NunitoSans-Regular.ttf', normal, normal);
 @include font('NunitoSans', '../../assets/fonts/NunitoSans/NunitoSans-Light.ttf', lighter, normal);
 
@@ -45,6 +46,7 @@
   }
   --fontWeightNormal: normal;
   --fontWeightBold: bold;
+  --fontWeightMedium: medium;
   --fontWeightLight: lighter;
   --fontStyleItalic: italic;
   --lineHeightMain: 1.5;

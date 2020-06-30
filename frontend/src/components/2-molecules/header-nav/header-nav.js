@@ -25,14 +25,14 @@ export default class HeaderNav extends Component {
         return (
             <Fragment>
                 {this.state.isLoggedIn
-                    ? <div className="m-header-nav">
-                        <ButtonPurple innerText="Connexion"/>
-                        <ButtonYellow innerText="Inscription"/>
-                    </div>
-                    : <div className="m-header-nav--connected">
+                    ? <div className="m-header-nav--connected">
                         <LinkTextPurple innerText="Mes messages"/>
                         <img src={NotificationIcon}/>
                         <Avatar To="/login" ImgSrc={AvatarTest}/>
+                    </div>
+                    : <div className="m-header-nav">
+                        <ButtonPurple To="/login" innerText="Connexion"/>
+                        <ButtonYellow To="/register" innerText="Inscription"/>
                     </div>
                 }
 

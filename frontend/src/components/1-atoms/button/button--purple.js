@@ -1,11 +1,14 @@
 import React from 'react';
 import './button.scss';
+import { NavLink } from 'react-router-dom';
 
 const ButtonPurple = (props) => {
+    console.log(props)
     return (
-        <a class="a-button a-button--purple" href="#">
+        <NavLink className="a-button a-button--purple" to={props.To}>
             {props.innerText}
-        </a>
+        </NavLink>
+      
     );
 };
 

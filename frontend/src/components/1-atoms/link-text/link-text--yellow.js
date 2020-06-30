@@ -1,11 +1,12 @@
 import React from 'react';
 import './link-text.scss';
+import { NavLink } from 'react-router-dom';
 
 const LinkTextYellow = (props) => {
     return (
-        <a class="a-link-text a-link-text--yellow" href="#">
+        <NavLink className="a-link-text a-link-text--yellow" to={props.To}>
             {props.innerText}
-        </a>
+        </NavLink>
     );
 };
 

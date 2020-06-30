@@ -8,7 +8,7 @@ const Intro = () => {
         <div className="o-intro">
             <Logo/>
             <p>Studeemi est une plateforme de tutorat interne aux étudiants de l’EEMI (École Européenne des Métiers de l'Internet) qui permet d’organiser les séances de tutorat en présentiel et de faciliter la prise de contact entre tuteurs et élèves.</p>
-            <ButtonPurple innerText="Commencer"/>
+            <ButtonPurple To="/login" innerText="Commencer"/>
         </div>
     );
 };
