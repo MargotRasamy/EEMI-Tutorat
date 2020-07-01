@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
-
+import Input from '../components/2-molecules/input/input';
 import axios from 'axios';
 
 export default class Login extends Component {
@@ -81,7 +81,7 @@ export default class Login extends Component {
                     <div className="form-group">
                         <input type="submit" value="Se connecter" className="btn btn-primary" />
                     </div>
-                    
+                    <Input />
                 </form>
             </div>
         )

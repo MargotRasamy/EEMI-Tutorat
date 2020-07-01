@@ -4,9 +4,10 @@
 
     //label
     &>label {
-        font-weight: var(--fontWeightMedium);
+        font-weight: var(--fontWeightBold);
         margin-bottom: var(--spaceXS);
         font-size: var(--fontSizeSubtitle);
+        color: var(--colorPurple);
     }
 
     //input
@@ -15,16 +16,17 @@
         border-radius: var(--borderRadiusSmall);
         box-sizing: border-box;
         border: none;
-        box-shadow: var(--boxShadow);
+        box-shadow: var(--boxShadowPurple);
         height: 40px;
         width: 100%;
         padding-left: var(--spaceM);
         font-size: var(--fontSizeMain);
+       
     }
 
     & input:focus {
-        border: 1px solid var(--colorMainLight);
-        outline: none;
+        border: 2px solid var(--colorPurpleLight);
+        outline: var(--colorPurple);
     }
 
     //div 
@@ -38,11 +40,17 @@
         cursor: pointer;
         background-color: transparent;
         border: none;
-        width: 18px;
-        padding: 10px;
-        height: 18px;
         position: absolute;
-        right: var(--spaceM);
+        right: var(--spaceS);
+        top:0;
+        bottom:0;
+        padding:0;
+        &>img{
+            height:18px;
+            width:18px;
+            object-fit: cover;
+            
+        }
     }
 
     & button:active,
@@ -50,6 +58,10 @@
         outline: none;
         border: none;
     }
+
+
+    // outline: none;
+    // border: none;
 
     //label and input
     & label,
