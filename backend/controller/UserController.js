@@ -6,6 +6,7 @@ const bcrypt = require('bcryptjs');
 var mongoose = require('mongoose');
 
 exports.getAll = (req, res)  => {
+    console.log('test dans getAll', req.session)
     User.find(function(err, users) {
         if (err) {
             console.log(err);

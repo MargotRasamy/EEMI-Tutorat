@@ -1,21 +1,26 @@
 const express = require('express');
-const app = express();
+
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
 const mongoose = require('mongoose');
 const session = require('express-session');
+const { v4: uuidv4 } = require('uuid');
+const dotenv = require('dotenv');
+dotenv.config();
+
 const MongoDBStore = require('connect-mongodb-session')(session);
 
 // Controller
 const UserController = require('./controller/UserController');
 const CourseController = require('./controller/CourseController');
 
+// A FINIR ou a SUPPR
 const isAuth = require('./middleware/is-auth');
 
-const PORT = 4000;
+const app = express();
 
-const MONGODB_URI = 'mongodb+srv://dbTutorat:dbTutoratPassword@clusterdb-vc2cm.mongodb.net/test?retryWrites=true&w=majority';
+const MONGODB_URI = process.env.MONGODB_URI;
 
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 
@@ -43,6 +48,7 @@ const todoRoutes = express.Router();
 app.use(cors());
 app.use(bodyParser.json());
 
+/*
 app.use((req, res, next) => {
     if (!req.session.user) {
         return next();
@@ -60,6 +66,7 @@ app.use((req, res, next) => {
         next(new Error(err));
       });
 });
+*/
 
 todoRoutes.route('/test').get(UserController.getById);
 todoRoutes.route('/update/:id').post(UserController.updateUser);
@@ -77,6 +84,6 @@ app.get('/users', UserController.getAll);
 
 app.get('/', UserController.getAll);
 
-app.listen(PORT, function() {
-  console.log("Server is running on Port: " + PORT);
+app.listen(process.env.PORT || 4001, function() {
+  console.log("Server is running on Port: " + process.env.PORT || 4001);
 });
