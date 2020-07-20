@@ -83,6 +83,7 @@ export default class RegisterStep2 extends Component {
                 
                 <form>
                     <p>Statut du compte </p>
+                    
                     <div className="form-checkbox">
                         <input className="form-check-input" type="checkbox" checked value="" id="defaultCheck2" disabled/>
                         <label className="form-check-label" for="defaultCheck2">
