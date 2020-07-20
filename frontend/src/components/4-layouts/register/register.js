@@ -20,7 +20,13 @@ export default class Register extends Component {
             lastname: '',
             email: '',
             password: '',
-            passwordConfirmation: ''
+            passwordConfirmation: '',
+            tutorStatus : false,
+            classYear : '',
+            modules : [],
+            subjects : [],
+            modulesTeached : [],
+            subjectsTeached : []
         }
 
     }
@@ -32,6 +38,7 @@ export default class Register extends Component {
             [element]: e.target.value
         });
     }
+    
 
     // Soumission du formulaire d'inscription
     // onSubmit = (e) => {
