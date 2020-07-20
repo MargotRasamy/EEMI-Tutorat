@@ -36,8 +36,13 @@ export default class Login extends Component {
             password: this.state.password
         };
 
+        const headers = {
+          'Content-Type': 'application/json',
+          'Authorization': 'JWT fefege...'
+        }
+
         // Envoi du nouvel utilisateur a la base de donnees (requete
-        axios.post('http://localhost:4000/login', newUserToValidate) // On envoie newUser dans le body
+        axios.post('http://localhost:4000/login', newUserToValidate, {headers: headers}) // On envoie newUser dans le body
             .then(res => {
                 
                 if(res.status === 200) {

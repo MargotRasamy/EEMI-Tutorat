@@ -159,6 +159,17 @@ exports.login = (req, res) => {
             bcrypt.compare(newPasswordToValidate, user.password)
             .then(match => {
                 if (match){
+
+                    // Ici on a le bon user : bon email et bon mdp
+
+                    const payload = { email };
+                    const token = jwt.sign(payload, secret, {
+                        expiresIn: '1h'
+                      });
+                    res.cookie('token', token, { httpOnly: true })
+                    .sendStatus(200);
+
+                    /*
                     req.session.isLoggedIn = true;
                     req.session.user = user;
                     return req.session.save(err => {
@@ -167,6 +178,7 @@ exports.login = (req, res) => {
                         // res.status(200).json({'user' : req.session.user }); // json is res.data sent to front end
                         res.redirect('/');
                     });
+                    */
                     
                 }
                 else {

@@ -11,7 +11,10 @@ const MongoDBStore = require('connect-mongodb-session')(session);
 const UserController = require('./controller/UserController');
 const CourseController = require('./controller/CourseController');
 
-const isAuth = require('./middleware/is-auth');
+const cookieParser = require('cookie-parser');
+
+const withAuth = require('./middleware/is-auth');
+
 
 const PORT = 4000;
 
@@ -23,6 +26,8 @@ const store = new MongoDBStore({
     uri: MONGODB_URI,
     collection: 'sessions'
 });
+
+const secret = 'mysecretsshhh';
 
 const connection = mongoose.connection;
 
@@ -43,6 +48,9 @@ const todoRoutes = express.Router();
 app.use(cors());
 app.use(bodyParser.json());
 
+app.use(cookieParser());
+
+/*
 app.use((req, res, next) => {
     if (!req.session.user) {
         return next();
@@ -60,6 +68,7 @@ app.use((req, res, next) => {
         next(new Error(err));
       });
 });
+*/
 
 todoRoutes.route('/test').get(UserController.getById);
 todoRoutes.route('/update/:id').post(UserController.updateUser);
@@ -74,6 +83,17 @@ app.post('/postMessage', UserController.addMessage);
 app.post('/login', UserController.login);
 app.post('/register', UserController.addUser);
 app.get('/users', UserController.getAll);
+
+app.get('/api/home', function(req, res) {
+  res.send('Welcome!');
+});
+app.get('/api/secret', withAuth, function(req, res) {
+  res.send('The password is potato');
+});
+
+app.get('/checkToken', withAuth, function(req, res) {
+  res.sendStatus(200);
+}
 
 app.get('/', UserController.getAll);
 
