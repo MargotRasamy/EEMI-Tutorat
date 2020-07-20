@@ -1,11 +1,12 @@
 import React from 'react';
 import './logo.scss';
+import { NavLink } from 'react-router-dom';
 
 const ButtonPurple = () => {
     return (
-        <a className="a-logo" href="#">
+        <NavLink className="a-logo" to="/">
             Stud<strong>eemi</strong>
-        </a>
+        </NavLink>
     );
 };
 

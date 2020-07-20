@@ -1,1 +1,32 @@
 @import '../../../styles/protons/medias.scss';
+
+.register {
+    display: grid;
+    grid-template-columns: var(--gridColumns);
+    grid-column-gap: var(--gutterWidth);
+    grid-row-gap: 0;
+    & .progress {
+        margin: var(--spaceS) 0;
+    }
+    
+    & > :first-child {
+        text-align: center;
+        margin-top: auto;
+        font-weight: bold;
+        color: var(--colorPurple);
+    }
+    & > * {
+        grid-column: 5 / 9;
+        @include small {
+            grid-column: 1 / 5;
+        }
+        @include medium {
+            grid-column: 3 / 11;
+        }
+        @include large {
+            grid-column: 4 / 10;
+        }
+
+    }
+
+}
