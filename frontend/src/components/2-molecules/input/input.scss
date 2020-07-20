@@ -1,6 +1,7 @@
 .m-input {
     display: flex;
     flex-direction: column;
+    margin: var(--spaceM) 0;
 
     //label
     &>label {
@@ -72,33 +73,3 @@
 }
 
 
-.m-input--footer {
-
-    //label
-    &>label {
-        color: var(--colorWhite);
-
-    }
-
-    //input
-    & input {
-        background-color: var(--colorSecondary);
-    }
-
-    & input:focus {
-        border: 1px solid var(--colorSecondaryLight);
-        outline: none;
-    }
-
-    //label and input
-    & label,
-    & input {
-        color: var(--colorWhite);
-    }
-
-    //placeholder
-    & input::placeholder {
-        color: var(--colorWhite);
-        opacity: 0.7;
-    }
-}

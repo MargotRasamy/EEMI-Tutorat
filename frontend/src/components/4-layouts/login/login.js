@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
-import Input from '../components/2-molecules/input/input';
+import Input from '../../2-molecules/input/input.js';
 import axios from 'axios';
+import ButtonYellow from '../../1-atoms/button/button--yellow.js';
+import LinkTextPurple from '../../1-atoms/link-text/link-text--purple.js';
+import './login.scss';
 
 export default class Login extends Component {
 
@@ -58,30 +61,31 @@ export default class Login extends Component {
 
     render() {
         return (
-            <div>
-                <h3>Connexion</h3>
+            <div className="login">
+                <h2>Connexion</h2>
                 <form onSubmit={(e) => this.onSubmit(e)}>
-                    <div className="form-group"> 
-                        <label>Email </label>
-                        <input  type="text"
-                                className="form-control"
-                                name="email"
-                                value={this.state.email}
-                                onChange={(e) => this.onChange(e)} />
-                    </div>
-                    <div className="form-group"> 
-                        <label>Mot de passe </label>
-                        <input  type="text"
-                                className="form-control"
-                                name="password"
-                                value={this.state.password}
-                                onChange={(e) => this.onChange(e)} />
-                    </div>
+                    <Input 
+                    type="text"
+                    placeholder="Entrez votre email"
+                    forId="email-input"
+                    name="email"
+                    label="Email"
+                    value={this.state.email}
+                    onChange={(e) => this.onChange(e)}/>
+
+                    <Input 
+                    type="password"
+                    placeholder="Entrez votre mot de passe"
+                    forId="password-input"
+                    name="password"
+                    label="Mot de passe"
+                    value={this.state.password}
+                    onChange={(e) => this.onChange(e)}/>
                  
-                    <div className="form-group">
-                        <input type="submit" value="Se connecter" className="btn btn-primary" />
-                    </div>
-                    <Input />
+                    <ButtonYellow innerText="Se connecter" type="submit"/>
+
+                    <p>Pas encore de compte ? <LinkTextPurple To="/register" innerText="Inscrivez-vous ici."/></p>
+                  
                 </form>
             </div>
         )

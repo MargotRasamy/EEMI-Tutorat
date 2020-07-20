@@ -11,6 +11,13 @@
     height:40px;
     box-shadow: var(--boxShadow);
     font-weight: bold;
+    border:none;
+    outline: none;
+}
+
+.a-button:focus, .a-button:active {
+    border:none;
+    outline: none;
 }
 
 .a-button--purple {

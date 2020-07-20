@@ -11,7 +11,7 @@ import CreateCourse from "./components/courses/newCourse";
 import EditTodo from "./components/edit-todo";
 import UsersList from "./components/UsersList";
 import Calendar from "./components/calendar";
-import Login from "./components/login";
+import Login from "./components/4-layouts/login/login.js";
 import AllCourses from './components/courses/allCourses';
 import Landing from './components/4-layouts/landing/landing';
 import Messages from './components/message';

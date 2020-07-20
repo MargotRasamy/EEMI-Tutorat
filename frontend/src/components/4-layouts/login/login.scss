@@ -1,0 +1,32 @@
+@import '../../../styles/protons/medias.scss';
+.login {
+    display: grid;
+    grid-template-columns: var(--gridColumns);
+    grid-column-gap: var(--gutterWidth);
+    grid-row-gap: 0;
+    margin-top: 7%;
+    
+    & > :first-child {
+        text-align: center;
+        margin-top: auto;
+        font-weight: bold;
+        color: var(--colorPurple);
+    }
+    & > * {
+        grid-column: 5 / 9;
+        @include small {
+            grid-column: 1 / 5;
+        }
+        @include medium {
+            grid-column: 3 / 11;
+        }
+        @include large {
+            grid-column: 4 / 10;
+        }
+
+    }
+
+    & > :nth-child(2) > :nth-child(3){
+        margin: var(--spaceL) 0;
+    }
+}

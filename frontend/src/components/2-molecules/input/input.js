@@ -1,21 +1,14 @@
-import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
+import React from 'react';
 import './input.scss';
-import Search from '../../../assets/images/avatars/1.jpg';
 import '../../1-atoms/link-icon/link-icon--purple';
-import LinkIconPurple from '../../1-atoms/link-icon/link-icon--purple';
 
-const Input = (props) => {
+const Input = ({label, placeholder, forId, value, name, type, onChange}) => {
     return (
-        <form onSubmit={() => {console.log('hello')}} class="m-input">
-            <label for="search-input">Lorem ipsum</label>
-                <div>
-
-                <input type="text" id="search-input" name="search-input" placeholder="Lorem ipsum..."/>
-                <button type="submit"> <img src={Search} /> </button>
-                
-                </div>
-        </form>
+        <div className="m-input">
+            <label for={forId}>{label}</label>
+            <input type={type} id={forId} name={name} value={value} placeholder={placeholder}
+            onChange={onChange}/>
+        </div>
     );
 };
 

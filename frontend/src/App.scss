@@ -1,13 +1,14 @@
 @import '~@fullcalendar/core/main.css';
 @import '~@fullcalendar/daygrid/main.css';
 @import './styles/protons/medias.scss';
+@import './styles/protons/fonts.scss';
 
 #root {
   min-height: 100vh;
   background-color: var(--colorPurpleVeryLight);
   height:100%;
   width:100%;
-  font-family: NunitoSans;
+  font-family: var(--fontFamilyMain);
   color: var(--colorBlack);
 }
 
@@ -32,7 +33,7 @@
 }
 
 h1,h2,h3,h4,h5,h6{
-  font-family: NunitoSans;
+  font-family: var(--fontFamilyMain);
   font-weight: bold;
 }
 
@@ -40,21 +41,24 @@ p{
   font-size: var(--fontSizeMain);
 }
 
-  h1{ font-size: 72px !important};
-  h2{ font-size: 36px !important};
-  h3{ font-size: 28px !important};
-  h4{ font-size: 24px !important};
-  h5{ font-size: 21px !important};
-  h6{ font-size: 18px !important};
+  h1{ @import './styles/protons/fonts.scss';
+};
+
+h1{font-size : var(--fontSizeH1)};
+h2{font-size : var(--fontSizeH2)};
+h3{font-size : var(--fontSizeH3)};
+h4{font-size : var(--fontSizeH4)};
+h5{font-size : var(--fontSizeH5)};
+h6{font-size : var(--fontSizeH6)};
 
 
   //MOBILE FONT SIZE
-  @include small {
-    h1{ font-size: 48px !important};
-    h2{ font-size: 30px !important};
-    h3{ font-size: 28px !important};
-    h4{ font-size: 24px !important};
-    h5{ font-size: 21px !important};
-    h6{ font-size: 18px !important};
+  // @include small {
+  //   h1{ font-size: 48px !important};
+  //   h2{ font-size: 30px !important};
+  //   h3{ font-size: 28px !important};
+  //   h4{ font-size: 24px !important};
+  //   h5{ font-size: 21px !important};
+  //   h6{ font-size: 18px !important};
 
-  }
+  // }
