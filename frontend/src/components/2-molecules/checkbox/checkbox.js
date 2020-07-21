@@ -1,11 +1,13 @@
 import React from 'react';
-import './select.scss';
+import './checkbox.scss';
 
 
-const Checkbox = ({label, placeholder, forId, value, name, type, onChange}) => {
+const Checkbox = ({label, forId, name, onChange, checked, disabled}) => {
     return (
-        <div className="Checkbox">
-         
+        <div className="checkbox">
+            <input type="checkbox" id={forId} name={name}
+            checked={checked} onChange={onChange} disabled={disabled}/>
+            <label for={forId}>{label}</label>
         </div>
     );
 };

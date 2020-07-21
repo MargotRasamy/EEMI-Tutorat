@@ -1,11 +1,11 @@
 import React from 'react';
 import Input from '../../2-molecules/input/input.js';
 import ButtonYellow from '../../1-atoms/button/button--yellow.js';
-import ButtonPurple from '../../1-atoms/button/button--purple.js';
+import LinkButtonPurple from '../../1-atoms/button/link-button--purple.js';
 import LinkTextPurple from '../../1-atoms/link-text/link-text--purple.js';
 import './register--step1.scss';
 
-const RegisterStep1 = ({onChange}) => {
+const RegisterStep1 = ({onChange, onClickNextBtn}) => {
     return (
         <div className="register-step1">
             <Input 
@@ -48,9 +48,10 @@ const RegisterStep1 = ({onChange}) => {
                 label="Confirmation de mot de passe"
                 onChange={onChange}
             />
-            <ButtonPurple innerText="RETOUR"/>
-            <ButtonYellow innerText="ETAPE SUIVANTE"/>
-
+            <span className="button-container">
+                <LinkButtonPurple innerText="RETOUR" To="/"/>
+                <ButtonYellow innerText="ETAPE SUIVANTE" onClick={onClickNextBtn}/>
+            </span>
             <p>Déjà inscrit ? <LinkTextPurple To="/register" innerText="Connectez-vous ici."/></p>
         </div>
     );

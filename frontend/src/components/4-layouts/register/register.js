@@ -16,7 +16,7 @@ export default class Register extends Component {
         super(props);
 
         this.state = {
-            firstname: '',
+            firstname: '', 
             lastname: '',
             email: '',
             password: '',
@@ -26,7 +26,8 @@ export default class Register extends Component {
             modules : [],
             subjects : [],
             modulesTeached : [],
-            subjectsTeached : []
+            subjectsTeached : [],
+            stepperValue : 0
         }
 
     }
@@ -38,6 +39,37 @@ export default class Register extends Component {
             [element]: e.target.value
         });
     }
+
+    // Previous component stepper
+    onClickPrevious = () => {
+        this.setState({
+            stepperValue : this.state.stepperValue -= 25
+        })
+    }
+
+    // Next component stepper
+    onClickNext = () => {
+        this.setState({
+            stepperValue : this.state.stepperValue += 25
+        })
+    }
+
+    // Detect the status of the user
+    onChangeTutorStatus = (e) => {
+        
+        const element = e.target.name;
+        this.setState({
+            [element]: e.target.checked
+        });
+    }
+
+    onSelectClassYear = (e) => {
+        e.preventDefault()
+        this.setState({
+            classYear: e.target.value
+        });
+    }
+
     
 
     // Soumission du formulaire d'inscription
@@ -79,18 +111,49 @@ export default class Register extends Component {
     // }
 
     render() {
+        
         return (
             <div className="register">
                 <h2>Inscription</h2>
 
                 {/* Stepper for registering steps */}
                 <div class="progress registering-progress" style={{height: "3px"}}>
-                    <div class="progress-bar registering-stepper-progress" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div class="progress-bar registering-stepper-progress" role="progressbar" 
+                    style={{width: this.state.stepperValue + '%'}} aria-valuenow={this.state.stepperValue} aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
-                <RegisterStep1 onChange={(e) => this.onChange(e)}/>
-                <RegisterStep2/>
-                <RegisterStep3/>
-                <RegisterStep4/>
+
+                <form>
+                
+                { this.state.stepperValue < 25 &&
+                <RegisterStep1 
+                onChange={(e) => this.onChange(e)}
+                onClickPreviousBtn={ (e) => this.onClickPrevious(e)}
+                onClickNextBtn={ (e) => this.onClickNext(e)}
+                /> }
+
+                { this.state.stepperValue === 25 &&
+                <RegisterStep2
+                onClickPreviousBtn={ (e) => this.onClickPrevious(e)}
+                onClickNextBtn={ (e) => this.onClickNext(e)}
+                onChange={(e) => this.onChangeTutorStatus(e)}
+                onSelect={(e) => this.onSelectClassYear(e)}
+                tutorStatus={this.state.tutorStatus}
+                 /> }
+
+
+                { this.state.stepperValue === 50 &&
+                <RegisterStep3
+                onClickPreviousBtn={ (e) => this.onClickPrevious(e)}
+                onClickNextBtn={ (e) => this.onClickNext(e)}
+                onChange={(e) => this.onChangeTutorStatus(e)}
+                onSelect={(e) => this.onSelectClassYear(e)}
+                tutorStatus={this.state.tutorStatus}
+                 /> }
+
+                {/* <RegisterStep3/>
+                <RegisterStep4/> */} 
+                </form>
+               
             </div>
         )
     }

@@ -7,6 +7,9 @@
     grid-row-gap: 0;
     & .progress {
         margin: var(--spaceS) 0;
+        // .progress-bar {
+        //     width: 10%;
+        // }
     }
     
     & > :first-child {
@@ -29,4 +32,24 @@
 
     }
 
+            // Buttons
+        & .button-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-column-gap: var(--gutterWidth);
+            grid-row-gap: 0;
+        }
+        & .button-container > :first-child {
+            grid-column: 1 / 2;
+        }
+        & .button-container > :last-child {
+            grid-column: 2 / 3;
+        }
+
+}
+
+.register-step1, .register-step2, .register-step3, .register-step4 {
+    & > * {
+        margin: var(--spaceL) 0;
+    }
 }
