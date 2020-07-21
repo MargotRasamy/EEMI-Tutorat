@@ -24,16 +24,13 @@ class App extends Component {
     super(props);
 
     this.state = {
-        isLoggedIn : false
+        isLoggedIn : localStorage.getItem('token') || null, 
     }
-
   };
-  render() {
-    
 
+  render() {
     return (
       <div className="main">
-        
         <Router>
           <Header isLoggedIn={this.state.isLoggedIn}/>
           <Route path="/" exact component={Landing} />

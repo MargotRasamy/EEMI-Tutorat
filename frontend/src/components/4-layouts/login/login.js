@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import Input from '../../2-molecules/input/input.js';
 import axios from 'axios';
@@ -13,9 +13,10 @@ export default class Login extends Component {
 
         this.state = {
             email: '',
-            password: ''
+            password: '',
+            jwt: localStorage.getItem('token') || null,
+            foods: [],
         }
-
     }
 
     // Recuperation de la valeur des champs de connexion
@@ -26,36 +27,40 @@ export default class Login extends Component {
         });
     }
 
+    // On requête le token pour le déposer dans le localStorage PUIS changer le state (changement de state peut-être à enlever plus tard)
+    getJwt = async (newUserToValidate) => {
+      const { data } = await axios.post(`http://localhost:4000/login`, newUserToValidate);
+      localStorage.setItem('token', data.token);
+      this.setState({jwt: data.token})
+
+      // Si la connexion est reussie, rediriger vers le site (dashboard)
+      this.props.history.push("/");
+    };
+
+    // getFoods = async (e) => {
+    //   e.preventDefault()
+    //   try {
+    //     const { data } = await axios.get(`http://localhost:4000/foods`);
+
+    //     this.setState({foods: data})
+    //   } catch (err) {
+    //     console.log(err)
+    //   }
+    // };
+
     // Soumission du formulaire de connexion
     onSubmit = (e) => {
         e.preventDefault();
         
-        console.log(`Connexion form submitted:`);
-        console.log(`Email is: ${this.state.email}`);
- 
+        console.log(`Connexion form submitted. Email is: ${this.state.email}`);
+
         // Creation d'un nouvelle validation d'utilisateur
         const newUserToValidate = {
-            email: this.state.email,
-            password: this.state.password
+          email: this.state.email,
+          password: this.state.password
         };
-
-        const headers = {
-          'Content-Type': 'application/json',
-          'Authorization': 'JWT fefege...'
-        }
-
-        // Envoi du nouvel utilisateur a la base de donnees (requete
-        axios.post('http://localhost:4000/login', newUserToValidate, {headers: headers}) // On envoie newUser dans le body
-            .then(res => {
-                
-                if(res.status === 200) {
-                    this.props.history.push("/");
-                }
-            }
-            );
-    
-        // Si la connexion est reussie, rediriger vers le site (dashboard)
-        
+        // On va chercher le token
+        this.getJwt(newUserToValidate)
 
         // Reinitialisation de l'etat et des valeurs des champs
         this.setState({
@@ -65,9 +70,22 @@ export default class Login extends Component {
     }
 
     render() {
+        const {jwt, foods} = this.state;
         return (
             <div className="login">
                 <h2>Connexion</h2>
+                <section>
+                  {/* <button onClick={(e) => this.getFoods(e)}>
+                    Tester le token
+                  </button> */}
+                  <ul>
+                    {foods.map((food, i) => (
+                      <li>{food.description}</li>
+                    ))}
+                  </ul>
+              </section>
+                {(!jwt) 
+                ? 
                 <form onSubmit={(e) => this.onSubmit(e)}>
                     <Input 
                     type="text"
@@ -90,9 +108,119 @@ export default class Login extends Component {
                     <ButtonYellow innerText="Se connecter" type="submit"/>
 
                     <p>Pas encore de compte ? <LinkTextPurple To="/register" innerText="Inscrivez-vous ici."/></p>
-                  
                 </form>
+                :
+                null
+                }
             </div>
         )
     }
 }
+
+/*
+function Opp() {
+  const storedJwt = localStorage.getItem('token');
+  const [jwt, setJwt] = useState(storedJwt || null);
+  const [foods, setFoods] = useState([]);
+
+  const getJwt = async (e) => {
+    e.preventDefault()
+    console.log('hola que tal')
+    const { data } = await axios.get(`/jwt`);
+    localStorage.setItem('token', data.token);
+    console.log("DATA",data)
+    setJwt(data.token);
+  };
+  const getFoods = async (e) => {
+    e.preventDefault()
+    try {
+      const { data } = await axios.get(`/foods`);
+      setFoods(data);
+    } catch (err) {
+    }
+  };
+  console.log(jwt)
+  return (
+    <>
+      <section style={{ marginBottom: '10px' }}>
+        <button onClick={(e) => getJwt(e)}>Get JWT</button>
+        {jwt && (
+          <pre>
+            <code>{jwt}</code>
+          </pre>
+        )}
+      </section>
+      <section>
+        <button onClick={(e) => getFoods(e)}>
+          Get Foods
+        </button>
+        <ul>
+          {foods.map((food, i) => (
+            <li>{food.description}</li>
+          ))}
+        </ul>
+        {/* {fetchError && (
+          <p style={{ color: 'red' }}>{fetchError}</p>
+        )}
+      </section>
+    </>
+  );
+}
+*/
+/*
+        const headers = {
+          'Content-Type': 'application/json',
+          'Authorization': 'JWT fefege...'
+        }
+
+        // Envoi du nouvel utilisateur a la base de donnees (requete
+        axios.post('http://localhost:4000/login', newUserToValidate, {headers: headers}) // On envoie newUser dans le body
+            .then(res => {
+                console.log("res", res)
+                
+                if(res.status === 200) {
+                    this.props.history.push("/");
+                }
+            }
+            );
+        */
+        /*
+        axios.interceptors.request.use(
+          config => {
+            const { origin } = new URL(config.url);
+            const allowedOrigins = [apiUrl];
+            const token = localStorage.getItem('token');    
+
+            if (allowedOrigins.includes(origin)) {
+              config.headers.authorization = `Bearer ${token}`;
+            }
+            this.props.history.push('/');
+            return config;
+          },
+          error => {
+            return Promise.reject(error);
+          }
+        );
+
+      /*
+      fetch('http://localhost:4000/login', {
+          method: 'POST',
+          body: JSON.stringify(newUserToValidate),
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+        .then(res => {
+          if (res.status === 200) {
+            console.log(res)
+            this.props.history.push('/');
+          } else {
+            const error = new Error(res.error);
+            throw error;
+          }
+        })
+        .catch(err => {
+          console.error(err);
+          alert('Error logging in please try again');
+        });
+        */

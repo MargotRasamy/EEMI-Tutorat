@@ -3,6 +3,10 @@ let Message = require('../model/message.model');
 let Todo = require('../model/todo.model');
 const bcrypt = require('bcryptjs');
 
+const jsonwebtoken = require('jsonwebtoken');
+const jwt = require('express-jwt');
+
+
 var mongoose = require('mongoose');
 
 exports.getAll = (req, res)  => {
@@ -144,7 +148,7 @@ exports.addMessage = (req, res) => {
                 .catch(err => {
                     res.status(400).send('adding new message failed');
                 });
-        }
+           }
         })
         .catch(err => {
             console.log("ERROR", err)
@@ -160,27 +164,10 @@ exports.login = (req, res) => {
             bcrypt.compare(newPasswordToValidate, user.password)
             .then(match => {
                 if (match){
-
                     // Ici on a le bon user : bon email et bon mdp
-
-                    const payload = { email };
-                    const token = jwt.sign(payload, secret, {
-                        expiresIn: '1h'
-                      });
-                    res.cookie('token', token, { httpOnly: true })
-                    .sendStatus(200);
-
-                    /*
-                    req.session.isLoggedIn = true;
-                    req.session.user = user;
-                    return req.session.save(err => {
-                        if(err){console.log(err);}
-                        console.log('connexion reussie', req.session);
-                        // res.status(200).json({'user' : req.session.user }); // json is res.data sent to front end
-                        res.redirect('/');
-                    });
-                    */
-                    
+                    const token = jsonwebtoken.sign({ user: req.body.email }, "hellooo");
+                    res.cookie('token', token, { httpOnly: true });
+                    res.json({ token });
                 }
                 else {
                     res.status(400).send('Either mail or password is wrong');
