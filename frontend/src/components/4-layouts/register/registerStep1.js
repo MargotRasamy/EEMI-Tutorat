@@ -50,7 +50,7 @@ const RegisterStep1 = ({onChange, onClickNextBtn}) => {
             />
             <span className="button-container">
                 <LinkButtonPurple innerText="RETOUR" To="/"/>
-                <ButtonYellow innerText="ETAPE SUIVANTE" onClick={onClickNextBtn}/>
+                <ButtonYellow innerText="ETAPE SUIVANTE" type="button" onClick={onClickNextBtn}/>
             </span>
             <p>Déjà inscrit ? <LinkTextPurple To="/register" innerText="Connectez-vous ici."/></p>
         </div>
