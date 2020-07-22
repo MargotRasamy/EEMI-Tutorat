@@ -8,6 +8,7 @@ import RegisterStep1 from './registerStep1';
 import RegisterStep2 from './registerStep2';
 import RegisterStep3 from './registerStep3';
 import RegisterStep4 from './registerStep4';
+import TagsInput from '../../2-molecules/tags-input/tagsInput.js';
 import './register.scss';
 
 export default class Register extends Component {
@@ -183,7 +184,12 @@ export default class Register extends Component {
                 onCheckModules={(e) => this.onCheckModules(e)}
                 onCheckModulesTeached={(e) => this.onCheckModulesTeached(e)}
                  /> }
-
+                <TagsInput
+                placeholder="Entrez une matiere"
+                name="matieres"
+                label="Matieres"
+               
+                />
                 {/* <RegisterStep3/>
                 <RegisterStep4/> */} 
                 </form>
