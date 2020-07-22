@@ -38,7 +38,7 @@ export default class RegisterStep3 extends Component {
 
 
     render() {
-        const {onChange, onClickPreviousBtn, onClickNextBtn, modules, modulesTeached, tutorStatus} = this.props
+        const {onChange, onClickPreviousBtn, onClickNextBtn, tutorStatus, onCheckModules, onCheckModulesTeached} = this.props
         
         return (
             <div className="register-step3">
@@ -51,6 +51,7 @@ export default class RegisterStep3 extends Component {
                             forId={module.name} 
                             name={module.name} 
                             key={i}
+                            onChange={onCheckModules}
                             />
                         }
                     )}
@@ -66,6 +67,7 @@ export default class RegisterStep3 extends Component {
                                 forId={module.name} 
                                 name={module.name} 
                                 key={i}
+                                onChange={onCheckModulesTeached}
                                 />
                             }
                         )}
@@ -77,20 +79,22 @@ export default class RegisterStep3 extends Component {
                 
             <Input 
                 type="text"
-                placeholder="Entrez votre prénom"
+                placeholder="Entrez des matières. (Exemple : PHP)"
                 forId="firstname-input"
                 name="firstname"
-                label="Prénom"
+                label="Matière(s) d'apprentissage"
                 onChange={onChange}
             />
-            <Input 
+
+            { tutorStatus &&
+                <Input 
                 type="text"
-                placeholder="Entrez votre nom"
+                placeholder="Entrez des matières. (Exemple : SEO)"
                 forId="lastname-input"
                 name="lastname"
-                label="Nom"
+                label="Matière(s) enseignée(s)"
                 onChange={onChange}
-            />
+            />}
                     
                     
               

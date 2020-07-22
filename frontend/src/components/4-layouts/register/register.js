@@ -70,7 +70,40 @@ export default class Register extends Component {
         });
     }
 
-    
+    // Check modules
+    onCheckModules = (e) => {     
+        if (e.target.checked) {
+            this.state.modules.push(e.target.name)
+            this.setState({
+            modules : this.state.modules
+            });
+        }
+        else {
+            var tempModules = this.state.modules.filter(
+                (element) => element != e.target.name
+            )
+            this.setState({
+                modules : tempModules
+            });
+        }
+    }
+
+    onCheckModulesTeached= (e) => {
+        if (e.target.checked) {
+            this.state.modulesTeached.push(e.target.name)
+            this.setState({
+            modulesTeached : this.state.modulesTeached
+            });
+        }
+        else {
+            var tempModules = this.state.modulesTeached.filter(
+                (element) => element != e.target.name
+            )
+            this.setState({
+                modulesTeached : tempModules
+            });
+        }
+    }
 
     // Soumission du formulaire d'inscription
     // onSubmit = (e) => {
@@ -145,9 +178,10 @@ export default class Register extends Component {
                 <RegisterStep3
                 onClickPreviousBtn={ (e) => this.onClickPrevious(e)}
                 onClickNextBtn={ (e) => this.onClickNext(e)}
-                onChange={(e) => this.onChangeTutorStatus(e)}
-                onSelect={(e) => this.onSelectClassYear(e)}
+                onChange={(e) => this.onChange(e)}
                 tutorStatus={this.state.tutorStatus}
+                onCheckModules={(e) => this.onCheckModules(e)}
+                onCheckModulesTeached={(e) => this.onCheckModulesTeached(e)}
                  /> }
 
                 {/* <RegisterStep3/>
