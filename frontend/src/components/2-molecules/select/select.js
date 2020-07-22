@@ -7,11 +7,11 @@ const Select = ({label, onChange, selectElements, defaultValueText}) => {
         <div className="select">
             <label for="select">{label}</label>
             <select id="select" onChange={onChange}>
-                <option defaultValue >{defaultValueText}</option>
+                <option defaultValue>{defaultValueText}</option>
                 {selectElements.map(
-                    (element) => {
+                    (element,i) => {
                         return <option
-                        key={element} value={element}>{element}</option>
+                        key={i} value={element}>{element}</option>
                     }
                 ) }
             </select>

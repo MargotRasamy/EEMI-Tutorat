@@ -13,6 +13,8 @@
         color: var(--colorPurple);
     }
     & > * {
+        
+        
         grid-column: 5 / 9;
         @include small {
             grid-column: 1 / 5;
@@ -25,8 +27,8 @@
         }
 
     }
-
-    & .a-button{
-        margin: var(--spaceL) 0;
+    form > * {
+        margin : var(--spaceL) 0;
     }
+   
 }

@@ -5,6 +5,7 @@
     grid-template-columns: var(--gridColumns);
     grid-column-gap: var(--gutterWidth);
     grid-row-gap: 0;
+
     & .progress {
         margin: var(--spaceS) 0;
         // .progress-bar {
@@ -52,4 +53,11 @@
     & > * {
         margin: var(--spaceL) 0;
     }
+}
+
+.label {
+    font-weight: var(--fontWeightBold);
+    margin-bottom: var(--spaceXS);
+    font-size: var(--fontSizeSubtitle);
+    color: var(--colorPurple);
 }

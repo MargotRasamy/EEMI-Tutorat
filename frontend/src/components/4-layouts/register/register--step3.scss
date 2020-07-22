@@ -1,0 +1,7 @@
+.register-step3 {
+    & .modules {
+        display: grid;
+        grid-template-columns: repeat(2, auto);
+        grid-gap: var(--gutterWidth);
+    }
+}

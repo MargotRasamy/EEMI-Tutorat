@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Dropdown from 'react-bootstrap/Dropdown';
 import Select from '../../2-molecules/select/select.js'
 import Checkbox from '../../2-molecules/checkbox/checkbox.js';
+import Input from '../../2-molecules/input/input.js';
 import './register--step3.scss';
 import ButtonYellow from '../../1-atoms/button/button--yellow.js';
 import ButtonPurple from '../../1-atoms/button/button--purple.js';
@@ -12,41 +13,89 @@ export default class RegisterStep3 extends Component {
         super(props);
 
         this.state = {
-            // List of classes and levels in school
-            classYearList : ['1A', '2A Initial', "2A Developpement web",
-            "2A Design", "3A Initial", "3A Developpement web", "3A Design"] 
+            // List of modules
+            modulesAvailable : [
+                {
+                    label : 'Développement web',
+                    name : 'webDev'
+                },
+                {
+                    label : 'Interactive design',
+                    name : 'design'
+                },
+                {
+                    label : 'E-Business',
+                    name : 'eBusiness'
+                },
+                {
+                    label : 'Management & Agilité',
+                    name : 'management'
+                }
+            ]
         }
 
     }
 
 
     render() {
-        const {onChange, onClickPreviousBtn, onClickNextBtn, tutorStatus, onSelect} = this.props
+        const {onChange, onClickPreviousBtn, onClickNextBtn, modules, modulesTeached, tutorStatus} = this.props
+        
         return (
             <div className="register-step3">
-                <div class="hello">
+                <div class="modules">
+                   <div class="modules-choice">
                     <p class="label">Module(s) d'apprentissage(s)</p>
-                    <p>En vous inscrivant sur Studeemi, vous serez automatiquement un élève. 
-                    Vous pouvez également activer un statut de tuteur. Ces options sont toujours
-                    modifiables dans les paramètres du compte.</p>
-                    <Checkbox label="Elève" 
-                        forId="studentStatus" 
-                        name="studentStatus" 
-                        checked disabled
-                    />
-                    <Checkbox label="Tuteur" 
-                        forId="tutorStatus" 
-                        name="tutorStatus"  
-                        onChange={onChange} 
-                        checked={tutorStatus} 
-                      />
-                </div> 
+                    {this.state.modulesAvailable.map(
+                        (module, i) => {
+                            return <Checkbox label={module.label}
+                            forId={module.name} 
+                            name={module.name} 
+                            key={i}
+                            />
+                        }
+                    )}
+                </div>
+                    
 
-                <Select 
-                label="Renseigner votre classe actuelle"
-                defaultValueText="-- Votre année à l'EEMI --"
-                selectElements={this.state.classYearList}
-                onChange={onSelect}/>
+                    { tutorStatus &&
+                    <div class="modules-choice">
+                        <p class="label">Module(s) enseigné(s)</p>
+                        {this.state.modulesAvailable.map(
+                            (module, i) => {
+                                return <Checkbox label={module.label}
+                                forId={module.name} 
+                                name={module.name} 
+                                key={i}
+                                />
+                            }
+                        )}
+                    </div>
+                    } 
+                </div>
+                
+            
+                
+            <Input 
+                type="text"
+                placeholder="Entrez votre prénom"
+                forId="firstname-input"
+                name="firstname"
+                label="Prénom"
+                onChange={onChange}
+            />
+            <Input 
+                type="text"
+                placeholder="Entrez votre nom"
+                forId="lastname-input"
+                name="lastname"
+                label="Nom"
+                onChange={onChange}
+            />
+                    
+                    
+              
+
+            
 
                 <div className="button-container">
                     <ButtonPurple innerText="RETOUR" onClick={onClickPreviousBtn}/>
