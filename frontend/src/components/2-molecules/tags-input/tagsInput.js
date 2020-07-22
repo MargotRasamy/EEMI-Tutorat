@@ -2,9 +2,8 @@ import React from 'react';
 import Input from '../../2-molecules/input/input.js';
 import './tags-input.scss';
 
-const TagsInput = ({label, placeholder, name, tags}) => {
-    const [tagsEntered, setTags]= React.useState(['PHP', 'Swift', 'UI'])
-    
+const TagsInput = ({label, placeholder, name}) => {
+    const [tagsEntered, setTags]= React.useState([])
     const onDeleteTag = (indexToRemove) => {
         setTags(
             tagsEntered.filter(

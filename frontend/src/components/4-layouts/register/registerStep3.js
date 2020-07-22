@@ -81,15 +81,14 @@ export default class RegisterStep3 extends Component {
             <TagsInput
             placeholder="Entrez une matiere"
             name="matieres"
-            label="Matieres"
-            
+            label="Matière(s) d'apprentissage"
             />
 
             { tutorStatus &&
                 <TagsInput
                 placeholder="Entrez une matiere"
                 name="matieres"
-                label="Matieres"
+                label="Matière(s) enseignée(s)"
                 
                 />
             }
