@@ -9,6 +9,7 @@ import RegisterStep2 from './registerStep2';
 import RegisterStep3 from './registerStep3';
 import RegisterStep4 from './registerStep4';
 import TagsInput from '../../2-molecules/tags-input/tagsInput.js';
+
 import './register.scss';
 
 export default class Register extends Component {
@@ -156,42 +157,42 @@ export default class Register extends Component {
                     style={{width: this.state.stepperValue + '%'}} aria-valuenow={this.state.stepperValue} aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
 
-                <form>
+                <form onSubmit={e => { e.preventDefault(); }}>
                 
-                { this.state.stepperValue < 25 &&
-                <RegisterStep1 
-                onChange={(e) => this.onChange(e)}
-                onClickPreviousBtn={ (e) => this.onClickPrevious(e)}
-                onClickNextBtn={ (e) => this.onClickNext(e)}
-                /> }
+                    { this.state.stepperValue < 25 &&
+                    <RegisterStep1 
+                    onChange={(e) => this.onChange(e)}
+                    onClickPreviousBtn={ (e) => this.onClickPrevious(e)}
+                    onClickNextBtn={ (e) => this.onClickNext(e)}
+                    /> }
 
-                { this.state.stepperValue === 25 &&
-                <RegisterStep2
-                onClickPreviousBtn={ (e) => this.onClickPrevious(e)}
-                onClickNextBtn={ (e) => this.onClickNext(e)}
-                onChange={(e) => this.onChangeTutorStatus(e)}
-                onSelect={(e) => this.onSelectClassYear(e)}
-                tutorStatus={this.state.tutorStatus}
-                 /> }
+                    { this.state.stepperValue === 25 &&
+                    <RegisterStep2
+                    onClickPreviousBtn={ (e) => this.onClickPrevious(e)}
+                    onClickNextBtn={ (e) => this.onClickNext(e)}
+                    onChange={(e) => this.onChangeTutorStatus(e)}
+                    onSelect={(e) => this.onSelectClassYear(e)}
+                    tutorStatus={this.state.tutorStatus}
+                    /> }
 
 
-                { this.state.stepperValue === 50 &&
-                <RegisterStep3
-                onClickPreviousBtn={ (e) => this.onClickPrevious(e)}
-                onClickNextBtn={ (e) => this.onClickNext(e)}
-                onChange={(e) => this.onChange(e)}
-                tutorStatus={this.state.tutorStatus}
-                onCheckModules={(e) => this.onCheckModules(e)}
-                onCheckModulesTeached={(e) => this.onCheckModulesTeached(e)}
-                 /> }
-                <TagsInput
-                placeholder="Entrez une matiere"
-                name="matieres"
-                label="Matieres"
-               
-                />
-                {/* <RegisterStep3/>
-                <RegisterStep4/> */} 
+                    { this.state.stepperValue === 50 &&
+                    <RegisterStep3
+                    onClickPreviousBtn={ (e) => this.onClickPrevious(e)}
+                    onClickNextBtn={ (e) => this.onClickNext(e)}
+                    onChange={(e) => this.onChange(e)}
+                    tutorStatus={this.state.tutorStatus}
+                    onCheckModules={(e) => this.onCheckModules(e)}
+                    onCheckModulesTeached={(e) => this.onCheckModulesTeached(e)}
+                    /> }
+                    
+                    { this.state.stepperValue === 75 &&
+                    <RegisterStep4
+                
+                    /> }
+
+
+        
                 </form>
                
             </div>

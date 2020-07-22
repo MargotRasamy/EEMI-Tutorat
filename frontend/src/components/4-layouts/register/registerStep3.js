@@ -6,6 +6,7 @@ import Input from '../../2-molecules/input/input.js';
 import './register--step3.scss';
 import ButtonYellow from '../../1-atoms/button/button--yellow.js';
 import ButtonPurple from '../../1-atoms/button/button--purple.js';
+import TagsInput from '../../2-molecules/tags-input/tagsInput.js';
 
 export default class RegisterStep3 extends Component {
 
@@ -38,7 +39,7 @@ export default class RegisterStep3 extends Component {
 
 
     render() {
-        const {onChange, onClickPreviousBtn, onClickNextBtn, tutorStatus, onCheckModules, onCheckModulesTeached} = this.props
+        const {onClickPreviousBtn, onClickNextBtn, tutorStatus, onCheckModules, onCheckModulesTeached} = this.props
         
         return (
             <div className="register-step3">
@@ -77,24 +78,21 @@ export default class RegisterStep3 extends Component {
                 
             
                 
-            <Input 
-                type="text"
-                placeholder="Entrez des matières. (Exemple : PHP)"
-                forId="firstname-input"
-                name="firstname"
-                label="Matière(s) d'apprentissage"
-                onChange={onChange}
+            <TagsInput
+            placeholder="Entrez une matiere"
+            name="matieres"
+            label="Matieres"
+            
             />
 
             { tutorStatus &&
-                <Input 
-                type="text"
-                placeholder="Entrez des matières. (Exemple : SEO)"
-                forId="lastname-input"
-                name="lastname"
-                label="Matière(s) enseignée(s)"
-                onChange={onChange}
-            />}
+                <TagsInput
+                placeholder="Entrez une matiere"
+                name="matieres"
+                label="Matieres"
+                
+                />
+            }
                     
                     
               
@@ -102,8 +100,8 @@ export default class RegisterStep3 extends Component {
             
 
                 <div className="button-container">
-                    <ButtonPurple innerText="RETOUR" onClick={onClickPreviousBtn}/>
-                    <ButtonYellow innerText="ETAPE SUIVANTE" onClick={onClickNextBtn}/>
+                    <ButtonPurple innerText="RETOUR" type="button" onClick={onClickPreviousBtn}/>
+                    <ButtonYellow innerText="ETAPE SUIVANTE" type="button" onClick={onClickNextBtn}/>
                 </div>
             </div>
         )

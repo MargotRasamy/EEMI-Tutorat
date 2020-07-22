@@ -49,8 +49,8 @@ export default class RegisterStep2 extends Component {
                 onChange={onSelect}/>
                 
                 <div className="button-container">
-                    <ButtonPurple innerText="RETOUR" onClick={onClickPreviousBtn}/>
-                    <ButtonYellow innerText="ETAPE SUIVANTE" onClick={onClickNextBtn}/>
+                    <ButtonPurple type="button" innerText="RETOUR" onClick={onClickPreviousBtn}/>
+                    <ButtonYellow type="button" innerText="ETAPE SUIVANTE" onClick={onClickNextBtn}/>
                 </div>
             </div>
         )

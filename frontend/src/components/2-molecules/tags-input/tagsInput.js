@@ -2,9 +2,9 @@ import React from 'react';
 import Input from '../../2-molecules/input/input.js';
 import './tags-input.scss';
 
-const TagsInput = ({label, placeholder, name}) => {
+const TagsInput = ({label, placeholder, name, tags}) => {
     const [tagsEntered, setTags]= React.useState(['PHP', 'Swift', 'UI'])
-
+    
     const onDeleteTag = (indexToRemove) => {
         setTags(
             tagsEntered.filter(
@@ -15,6 +15,7 @@ const TagsInput = ({label, placeholder, name}) => {
     }
 
     const addTag = (e) => {
+        
         if(e.key === "Enter") {
             setTags(
                [...tagsEntered, e.target.value]
@@ -35,7 +36,7 @@ const TagsInput = ({label, placeholder, name}) => {
                         </div>
                 )}
                 <input type="text" id={name} name={name} placeholder={placeholder}
-                onKeyPress={(e) => addTag(e)}/>   
+                onKeyUp={(e) => addTag(e)}/>   
            </div>
         </div>
     );
