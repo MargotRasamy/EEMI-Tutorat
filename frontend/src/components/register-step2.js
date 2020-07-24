@@ -86,13 +86,13 @@ export default class RegisterStep2 extends Component {
                     
                     <div className="form-checkbox">
                         <input className="form-check-input" type="checkbox" checked value="" id="defaultCheck2" disabled/>
-                        <label className="form-check-label" for="defaultCheck2">
+                        <label className="form-check-label" htmlFor="defaultCheck2">
                             Eleve
                         </label>
                         </div>
                     <div className="form-checkbox"> 
                         <input className="form-check-input" type="checkbox" checked={this.state.tutorStatus} name="tutorStatus" value="" id="defaultCheck1" onChange={(e) => this.onChange(e)}/>
-                        <label className="form-check-label" for="defaultCheck1">
+                        <label className="form-check-label" htmlFor="defaultCheck1">
                             Tuteur
                         </label>
                     </div>

@@ -1,32 +1,19 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import { connect } from 'react-redux';
 
 import HeaderNav from '../../2-molecules/header-nav/header-nav';
 import Logo from '../../1-atoms/logo/logo';
 import './header.scss';
 
 
-export default class Header extends Component {
-
-    // constructor(props) {
-    //     super(props);
-
-    //     this.state = {
-    //         firstname: '',
-    //         lastname: '',
-    //         email: '',
-    //         password: '',
-    //         passwordConfirmation: ''
-    //     }
-
-    // }
-    
+class Header extends Component {    
     // # On remove le token du localStorage
     logout = () => {
         localStorage.removeItem('token');
+        this.props.setLogout()
     }
     render() {
-        const {isLoggedIn} = this.props;
+        const {isLoggedIn, setLogout} = this.props;
         return (
             <div className="o-header">
                 {(isLoggedIn) ? <button class="btn btn-danger col-2" onClick={this.logout} >Log out</button> : null}
@@ -36,3 +23,18 @@ export default class Header extends Component {
         )
     }
 }
+
+const getProps = state => {
+    return {
+      isLoggedIn : state.isLoggedIn,
+    }
+}
+
+const setProps = dispatch => {
+return {
+    setLogout: () => {
+    dispatch({type: "LOGOUT", logout: null});
+    },
+}
+}; 
+  export default connect(getProps, setProps)(Header);

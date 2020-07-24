@@ -5,7 +5,7 @@ import './select.scss';
 const Select = ({label, placeholder, forId, value, name, type, onChange}) => {
     return (
         <div className="select">
-            <label for="select">Renseigner votre classe actuelle</label>
+            <label htmlFor="select">Renseigner votre classe actuelle</label>
             <select id="select">
                 <option value="fr" selected>-- Votre année à l'EEMI --</option>
                 <option value="1A" >1A</option>

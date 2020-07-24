@@ -66,7 +66,7 @@ export default class CreateCourse extends Component {
                 </div>
                 <form onSubmit={(e) => this.onSubmit(e)}>
                     <div className="form-group">
-                        <label htmlFor="module_concerne">Module concerné</label>
+                        <label htmlhtmlFor="module_concerne">Module concerné</label>
                         <select onChange={(e) => this.onChange(e)} className="form-control" id="module_concerne" name="module">
                             <option value="">Choisis le module du cours</option>
                             <option value="dev">Développement Web</option>
@@ -100,7 +100,7 @@ export default class CreateCourse extends Component {
                                 onChange={(e) => this.onChange(e)} />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="maxParticipants">Nombre maximal de participants</label>
+                        <label htmlhtmlFor="maxParticipants">Nombre maximal de participants</label>
                         <select onChange={(e) => this.onChange(e)} className="form-control" name="maxParticipants" id="maxParticipants">
                             <option value="1">1</option>
                             <option value="2">2</option>

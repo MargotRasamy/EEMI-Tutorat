@@ -10,12 +10,12 @@ const RegisterStep2 = (props) => {
                     <div>
                         <input type="checkbox" id="scales" name="scales"
                                 checked/>
-                        <label for="scales">Eleve</label>
+                        <label htmlFor="scales">Eleve</label>
                     </div>
                     <div>
                         <input type="checkbox" id="scales" name="scales"
                                 checked/>
-                        <label for="scales">Tuteur</label>
+                        <label htmlFor="scales">Tuteur</label>
                     </div>
                     
                     <Select />

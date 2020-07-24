@@ -23,6 +23,7 @@ export default class Landing extends Component {
     // }
 
     render() {
+        console.log('hello from Landing')
         return (
             <div className="l-landing">
               <Intro/>

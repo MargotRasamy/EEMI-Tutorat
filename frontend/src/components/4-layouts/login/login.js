@@ -1,12 +1,12 @@
 import React, { Component, useState } from 'react';
-import { Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
 import Input from '../../2-molecules/input/input.js';
 import axios from 'axios';
 import ButtonYellow from '../../1-atoms/button/button--yellow.js';
 import LinkTextPurple from '../../1-atoms/link-text/link-text--purple.js';
 import './login.scss';
 
-export default class Login extends Component {
+class Login extends Component {
 
     constructor(props) {
         super(props);
@@ -31,7 +31,8 @@ export default class Login extends Component {
     getJwt = async (newUserToValidate) => {
       const { data } = await axios.post(`http://localhost:4000/login`, newUserToValidate);
       localStorage.setItem('token', data.token);
-      this.setState({jwt: data.token})
+      this.props.setLoggin(data.token)
+      //this.setState({jwt: data.token})
 
       // Si la connexion est reussie, rediriger vers le site (dashboard)
       this.props.history.push("/");
@@ -116,6 +117,22 @@ export default class Login extends Component {
         )
     }
 }
+
+const getProps = state => {
+  return {
+    isLoggedIn : state.isLoggedIn,
+  }
+}
+// to SET to the store as dispatch
+const setProps = dispatch => {
+  return {
+    setLoggin: token => {
+      // login c'est le payload, voir STORE.
+      dispatch({type: "LOGGIN", login: token});
+    },
+  }
+};  
+export default connect(getProps, setProps)(Login);
 
 /*
 function Opp() {

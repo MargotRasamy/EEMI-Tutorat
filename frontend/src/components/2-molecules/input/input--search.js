@@ -7,7 +7,7 @@ import '../../1-atoms/link-icon/link-icon--purple';
 const Input = (props) => {
     return (
         <form onSubmit={() => {console.log('hello')}} class="m-input">
-            <label for="search-input">Lorem ipsum</label>
+            <label htmlFor="search-input">Lorem ipsum</label>
                 <div>
 
                 <input type="text" id="search-input" name="search-input" placeholder="Lorem ipsum..."/>

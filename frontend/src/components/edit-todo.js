@@ -141,7 +141,7 @@ export default class EditTodo extends Component {
                                 checked={this.state.todo_completed}
                                 value={this.state.todo_completed}
                                 />
-                        <label className="form-check-label" htmlFor="completedCheckbox">
+                        <label className="form-check-label" htmlhtmlFor="completedCheckbox">
                             Completed
                         </label>                        
                     </div>

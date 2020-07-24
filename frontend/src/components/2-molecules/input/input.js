@@ -5,7 +5,7 @@ import '../../1-atoms/link-icon/link-icon--purple';
 const Input = ({label, placeholder, forId, value, name, type, onChange}) => {
     return (
         <div className="m-input">
-            <label for={forId}>{label}</label>
+            <label htmlFor={forId}>{label}</label>
             <input type={type} id={forId} name={name} value={value} placeholder={placeholder}
             onChange={onChange}/>
         </div>

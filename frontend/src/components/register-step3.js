@@ -86,25 +86,25 @@ export default class RegisterStep3 extends Component {
                     <p>Module(s) d'apprentissage</p>
                     <div className="form-checkbox">
                         <input className="form-check-input" type="checkbox"  value="" id="defaultCheck2"/>
-                        <label className="form-check-label" for="defaultCheck2">
+                        <label className="form-check-label" htmlFor="defaultCheck2">
                             Developpement web
                         </label>
                         </div>
                     <div className="form-checkbox"> 
                         <input className="form-check-input" type="checkbox" checked={this.state.tutorStatus} name="tutorStatus" value="" id="defaultCheck1" onChange={(e) => this.onChange(e)}/>
-                        <label className="form-check-label" for="defaultCheck1">
+                        <label className="form-check-label" htmlFor="defaultCheck1">
                             Interactive Design
                         </label>
                     </div>
                     <div className="form-checkbox">
                         <input className="form-check-input" type="checkbox"  value="" id="defaultCheck2"/>
-                        <label className="form-check-label" for="defaultCheck2">
+                        <label className="form-check-label" htmlFor="defaultCheck2">
                             E-business
                         </label>
                         </div>
                     <div className="form-checkbox"> 
                         <input className="form-check-input" type="checkbox" checked={this.state.tutorStatus} name="tutorStatus" value="" id="defaultCheck1" onChange={(e) => this.onChange(e)}/>
-                        <label className="form-check-label" for="defaultCheck1">
+                        <label className="form-check-label" htmlFor="defaultCheck1">
                             Management et agilite
                         </label>
                     </div>
